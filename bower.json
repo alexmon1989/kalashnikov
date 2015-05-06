@@ -1,0 +1,8 @@
+{
+  "name": "Kalashnikov",
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.4",
+    "adminlte": "~2.0.5"
+  }
+}
