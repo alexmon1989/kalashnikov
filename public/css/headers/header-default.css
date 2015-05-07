@@ -434,6 +434,7 @@
 	.header .navbar-nav > .active > a:hover, 
 	.header .navbar-nav > .active > a:focus {
 		background: none;
+        font-weight: bold;
 	}
 
 	.header .navbar-nav > .open > a,

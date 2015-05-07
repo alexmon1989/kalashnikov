@@ -1,7 +1,7 @@
 <?php
 /**
  * An helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.0.28 on 2015-05-03.
+ * Generated for Laravel 5.0.28 on 2015-05-07.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -10831,6 +10831,11 @@ namespace {
     }
 
 
+    class Str extends \Illuminate\Support\Str{
+        
+    }
+
+
     class URL extends \Illuminate\Support\Facades\URL{
         
         /**
@@ -11598,6 +11603,104 @@ namespace {
          */
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
+        }
+        
+    }
+
+
+    class Widget extends \Pingpong\Widget\WidgetFacade{
+        
+        /**
+         * Register new widget.
+         *
+         * @param string $name
+         * @param string|callable $callback
+         * @return void 
+         * @static 
+         */
+        public static function register($name, $callback){
+            \Pingpong\Widget\Widget::register($name, $callback);
+        }
+        
+        /**
+         * Register widget using a specified handler class.
+         *
+         * @param string $subscriber
+         * @return void 
+         * @static 
+         */
+        public static function subscribe($subscriber){
+            \Pingpong\Widget\Widget::subscribe($subscriber);
+        }
+        
+        /**
+         * Determine whether a widget there or not.
+         *
+         * @param string $name
+         * @return boolean 
+         * @static 
+         */
+        public static function has($name){
+            return \Pingpong\Widget\Widget::has($name);
+        }
+        
+        /**
+         * Calling a specific widget.
+         *
+         * @param string $name
+         * @param array $parameters
+         * @return mixed 
+         * @static 
+         */
+        public static function call($name, $parameters = array()){
+            return \Pingpong\Widget\Widget::call($name, $parameters);
+        }
+        
+        /**
+         * Calling a specific widget.
+         *
+         * @param string $name
+         * @param array $parameters
+         * @return mixed 
+         * @static 
+         */
+        public static function get($name, $parameters = array()){
+            return \Pingpong\Widget\Widget::get($name, $parameters);
+        }
+        
+        /**
+         * Group some widgets.
+         *
+         * @param string $name
+         * @param array $widgets
+         * @return void 
+         * @static 
+         */
+        public static function group($name, $widgets){
+            \Pingpong\Widget\Widget::group($name, $widgets);
+        }
+        
+        /**
+         * Determine whether a group of widgets there or not.
+         *
+         * @param string $name
+         * @return boolean 
+         * @static 
+         */
+        public static function hasGroup($name){
+            return \Pingpong\Widget\Widget::hasGroup($name);
+        }
+        
+        /**
+         * Call a specific group of widgets.
+         *
+         * @param string $name
+         * @param array $parameters
+         * @return string 
+         * @static 
+         */
+        public static function callGroup($name, $parameters = array()){
+            return \Pingpong\Widget\Widget::callGroup($name, $parameters);
         }
         
     }

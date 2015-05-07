@@ -16,12 +16,13 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">Меню</li>
-            <li>
-                <a href="#">
+            <li class="{{ Request::segment(2) == 'dashboard' || Request::segment(2) == '' ? 'active' : '' }}">
+                <a href="{{ action('Admin\DashboardController@getIndex') }}">
                     <i class="fa fa-dashboard"></i> <span>Начало работы</span>
                 </a>
             </li>
-            <li class="treeview">
+
+            <li class="treeview {{ Request::segment(2) == 'main' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-home"></i>
                     <span>Главная страница</span>
@@ -34,8 +35,8 @@
                 </ul>
             </li>
 
-            <li>
-                <a href="#">
+            <li class="{{ Request::segment(2) == 'news' ? 'active' : '' }}">
+                <a href="{{ action('Admin\NewsController@getIndex') }}">
                     <i class="fa fa-newspaper-o"></i> <span>Новости</span>
                 </a>
             </li>

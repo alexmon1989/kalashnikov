@@ -16,6 +16,8 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="{{ asset('adminlte/css/skins/_all-skins.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <link href="{{ asset('adminlte/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -32,15 +34,7 @@
 
       <!-- Right side column. Contains the navbar and content of the page -->
       <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Начало работы
-          </h1>
-          <ol class="breadcrumb">
-            <li class="active"><i class="fa fa-dashboard"></i> Начало работы</li>
-          </ol>
-        </section>
+        @yield('top_content')
 
         <!-- Main content -->
         <section class="content">
@@ -66,7 +60,12 @@
     <script src="{{ asset('adminlte/plugins/slimScroll/jquery.slimScroll.min.js') }}" type="text/javascript"></script>
     <!-- FastClick -->
     <script src="{{ asset('adminlte/plugins/fastclick/fastclick.min.js') }}"></script>
+    <!-- Datatables -->
+    <script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('adminlte/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('adminlte/js/app.min.js') }}" type="text/javascript"></script>
+    <!-- Custom JS -->
+    <script src="{{ asset('adminlte/js/custom.js') }}" type="text/javascript"></script>
   </body>
 </html>

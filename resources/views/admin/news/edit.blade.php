@@ -2,9 +2,11 @@
 
 @section('top_content')
 @include('admin.layout.breadcrumbs', [
-            'title' => 'Начало работы',
+            'title' => 'Редактирование новости',
             'items' => array(
-                    array('title' => 'Начало работы', 'action' => 'Admin\DashboardController@getIndex', 'active' => TRUE),
+                    array('title' => 'Начало работы', 'action' => 'Admin\DashboardController@getIndex', 'active' => FALSE),
+                    array('title' => 'Новости', 'action' => 'Admin\NewsController@getIndex', 'active' => FALSE),
+                    array('title' => $news->title, 'action' => '', 'active' => TRUE),
             )
         ])
 @stop
@@ -12,14 +14,14 @@
 @section('content')
 <div class="box">
     <div class="box-header with-border">
-        <h3 class="box-title">Добро пожаловать!</h3>
+        <h3 class="box-title">{{ $news->title }}</h3>
         <div class="box-tools pull-right">
             <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
             <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
         </div>
     </div>
     <div class="box-body">
-        Вы попали в панель управления сайтом <b>ИП Калашников</b>. В меню слева вы найдёте всё для редактирования его содержимого.
+        @include('admin.news._form')
     </div><!-- /.box-body -->
     <div class="box-footer">
 

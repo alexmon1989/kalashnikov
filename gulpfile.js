@@ -47,6 +47,8 @@ elixir(function(mix) {
         .copy('resources/assets/bower/adminlte/plugins/jQuery', 'public/adminlte/plugins/jQuery')
         .copy('resources/assets/bower/adminlte/plugins/slimScroll', 'public/adminlte/plugins/slimScroll')
         .copy('resources/assets/bower/adminlte/plugins/fastclick', 'public/adminlte/plugins/fastclick')
-        .copy('resources/assets/bower/adminlte/plugins/iCheck', 'public/adminlte/plugins/iCheck');
+        .copy('resources/assets/bower/adminlte/plugins/datatables', 'public/adminlte/plugins/datatables')
+        .copy('resources/assets/bower/adminlte/plugins/iCheck', 'public/adminlte/plugins/iCheck')
+        .copy('resources/assets/bower/adminlte/dist/js/custom.js', 'public/adminlte/js/custom.js');
 });
 

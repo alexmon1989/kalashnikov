@@ -11,11 +11,19 @@
 |
 */
 
-Route::controllers([
-    'admin/auth' => 'Admin\Auth\AuthController',
-    'admin/password' => 'Admin\Auth\PasswordController',
-    'admin/dashboard' => 'Admin\DashboardController',
-]);
+Route::get('admin', 'Admin\DashboardController@getIndex');
+
+// Роут контроллера авторизации, middleware указан в его конструкторе
+Route::controller('admin/auth', 'Admin\Auth\AuthController');
+
+// Группа роутов админки
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function()
+{
+    Route::controllers([
+        'dashboard' => 'DashboardController',
+        'news' => 'NewsController',
+    ]);
+});
 
 Route::get('/', 'Marketing\MainController@index');
 Route::get('main', 'Marketing\MainController@index');

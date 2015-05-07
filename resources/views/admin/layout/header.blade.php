@@ -1,5 +1,5 @@
 <header class="main-header">
-    <a href="#" class="logo">ИП <b>Калашников</b></a>
+    <a href="{{ action('Admin\DashboardController@getIndex') }}" class="logo">ИП <b>Калашников</b></a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
@@ -32,7 +32,7 @@
                                 <a href="#" class="btn btn-default btn-flat">Профиль</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Выход</a>
+                                <a href="{{ action('Admin\Auth\AuthController@getLogout') }}" class="btn btn-default btn-flat">Выход</a>
                             </div>
                         </li>
                     </ul>
