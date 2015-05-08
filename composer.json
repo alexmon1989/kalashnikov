@@ -7,7 +7,9 @@
 	"require": {
 		"laravel/framework": "5.0.*",
 		"barryvdh/laravel-ide-helper": "^2.0",
-        "pingpong/widget" : "2.0.*@dev"
+        "pingpong/widget" : "2.0.*@dev",
+		"barryvdh/laravel-elfinder": "0.3.*",
+		"intervention/image": "~2.2"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
@@ -34,6 +36,7 @@
 		"post-update-cmd": [
 			"php artisan clear-compiled",
             "php artisan ide-helper:generate",
+            "php artisan elfinder:publish",
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [

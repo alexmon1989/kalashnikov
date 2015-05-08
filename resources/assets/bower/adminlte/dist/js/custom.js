@@ -3,6 +3,7 @@
  */
 $(document).ready(function() {
     $('#data').dataTable({
+        "stateSave": true,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.7/i18n/Russian.json"
         }

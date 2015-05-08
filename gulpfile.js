@@ -49,6 +49,16 @@ elixir(function(mix) {
         .copy('resources/assets/bower/adminlte/plugins/fastclick', 'public/adminlte/plugins/fastclick')
         .copy('resources/assets/bower/adminlte/plugins/datatables', 'public/adminlte/plugins/datatables')
         .copy('resources/assets/bower/adminlte/plugins/iCheck', 'public/adminlte/plugins/iCheck')
-        .copy('resources/assets/bower/adminlte/dist/js/custom.js', 'public/adminlte/js/custom.js');
+        .copy('resources/assets/bower/adminlte/dist/js/custom.js', 'public/adminlte/js/custom.js')
+
+        // CKEDITOR
+        .copy('resources/assets/bower/ckeditor/config.js', 'public/plugins/ckeditor/config.js')
+        .copy('resources/assets/bower/ckeditor/ckeditor.js', 'public/plugins/ckeditor/ckeditor.js')
+        .copy('resources/assets/bower/ckeditor/styles.js', 'public/plugins/ckeditor/styles.js')
+        .copy('resources/assets/bower/ckeditor/contents.css', 'public/plugins/ckeditor/contents.css')
+        .copy('resources/assets/bower/ckeditor/adapters', 'public/plugins/ckeditor/adapters')
+        .copy('resources/assets/bower/ckeditor/lang', 'public/plugins/ckeditor/lang')
+        .copy('resources/assets/bower/ckeditor/plugins', 'public/plugins/ckeditor/plugins')
+        .copy('resources/assets/bower/ckeditor/skins', 'public/plugins/ckeditor/skins');
 });
 

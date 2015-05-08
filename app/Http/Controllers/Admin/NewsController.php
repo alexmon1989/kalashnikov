@@ -6,8 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\News;
+use Illuminate\Support\Facades\Input;
+use App\Http\Requests\StoreNewsRequest;
+use Intervention\Image\Facades\Image;
 
 class NewsController extends Controller {
+
+    protected $thumb_dest;
+
+    public function __construct()
+    {
+       $this->thumb_dest = public_path('img/thumb/');
+    }
 
 	/**
 	 * Отображает список новостей
@@ -44,9 +54,28 @@ class NewsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function postEdit($id)
+	public function postEdit(StoreNewsRequest $request, $id)
 	{
-		//
+        $news = News::find($id);
+
+        if (empty($news)) {
+            abort(404);
+        }
+
+        // меняем данные и сохраняем
+        $news->title = trim(Input::get('title'));
+        $news->full_text = Input::get('full_text');
+        $news->preview_text_small = Input::get('preview_text_small');
+        $news->preview_text_mid = Input::get('preview_text_mid');
+        $news->is_on_main = Input::get('is_on_main', 0);
+        if ($request->hasFile('thumbnail'))
+        {
+            $news->thumbnail = $this->createThumbnail($news->thumbnail);
+        }
+        $news->save();
+
+        return redirect()->action('Admin\NewsController@getEdit', array('id' => $id))
+                         ->with('success', 'Новость успешно сохранена.');
 	}
 
 	/**
@@ -56,7 +85,7 @@ class NewsController extends Controller {
 	 */
 	public function getCreate()
 	{
-		//
+        return view('admin.news.add');
 	}
 
 	/**
@@ -64,9 +93,19 @@ class NewsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postCreate()
+	public function postCreate(StoreNewsRequest $request)
 	{
-		//
+		$news = new News;
+        $news->title = trim(Input::get('title'));
+        $news->full_text = Input::get('full_text');
+        $news->preview_text_small = Input::get('preview_text_small');
+        $news->preview_text_mid = Input::get('preview_text_mid');
+        $news->is_on_main = Input::get('is_on_main', 0);
+        $news->thumbnail = $this->createThumbnail();
+        $news->save();
+
+        return redirect()->action('Admin\NewsController@getEdit', array('id' => $news->id))
+                        ->with('success', 'Новость успешно сохранена.');
 	}
 
 	/**
@@ -77,7 +116,41 @@ class NewsController extends Controller {
 	 */
 	public function getDelete($id)
 	{
-		//
+        $news = News::find($id);
+
+        if (empty($news)) {
+            abort(404);
+        }
+
+        // Удаляем изображение
+        unlink($this->thumb_dest.$news->thumbnail);
+
+        $news->delete();
+
+        return redirect()->action('Admin\NewsController@getIndex')
+                        ->with('success', 'Новость успешно удалена.');
 	}
+
+    /**
+     * Метод для добавления изображения в соотв. папку
+     */
+    private function createThumbnail($old_name = NULL)
+    {
+        // Название изображения
+        $name = str_random(10);
+
+        // Загруженный файл
+        $upload_file = Input::file('thumbnail');
+
+        Image::make($upload_file)->resize(973, 615)->save($this->thumb_dest.$name.'.'.$upload_file->getClientOriginalExtension());
+
+        // Если есть старый файл, то удаляем его
+        if ($old_name)
+        {
+            unlink( $this->thumb_dest.$old_name );
+        }
+
+        return $name.'.'.$upload_file->getClientOriginalExtension();
+    }
 
 }
