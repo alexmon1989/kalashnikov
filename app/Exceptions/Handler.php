@@ -62,7 +62,7 @@ class Handler extends ExceptionHandler {
 
         if (view()->exists($prefix."errors.{$status}"))
         {
-            return response()->view("errors.{$status}", [], $status);
+            return response()->view("$prefix.errors.{$status}", [], $status);
         }
         else
         {

@@ -35,7 +35,6 @@
                     <li class="{{ Request::segment(3) == 'article' ? 'active' : '' }}">
                         <a href="{{ action('Admin\MainArticleController@getIndex') }}"><i class="fa fa-circle-o"></i> Главная статья</a>
                     </li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Настройки</a></li>
                 </ul>
             </li>
 
@@ -44,6 +43,8 @@
                     <i class="fa fa-newspaper-o"></i> <span>Новости</span>
                 </a>
             </li>
+
+            <li><a href="#"><i class="fa fa-cogs"></i> Настройки</a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

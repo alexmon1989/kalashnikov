@@ -1,24 +1,26 @@
-@extends('admin.layout.master')
+@extends('marketing.layout.master')
 
 @section('top_content')
-@include('admin.layout.breadcrumbs', [
+@include('marketing.layout.breadcrumbs', [
             'title' => '404 Ошибка',
             'items' => array(
-                    array('title' => 'Начало работы', 'action' => 'Admin\DashboardController@getIndex', 'active' => FALSE),
-                    array('title' => '404', 'action' => '', 'active' => TRUE),
+                    array('title' => 'Главная', 'action' => 'Marketing\MainController@index', 'active' => FALSE),
+                    array('title' => '404 Ошибка', 'action' => '', 'active' => TRUE),
             )
         ])
 @stop
 
 @section('content')
-<div class="error-page">
-    <h2 class="headline text-yellow"> 404</h2>
-    <div class="error-content">
-        <h3><i class="fa fa-warning text-yellow"></i> Ошибка! Страница не найдена.</h3>
-        <p>
-        Страница отсутствует. <br/>
-        Вы можете вернуться на <a href='{{ action('Admin\DashboardController@getIndex') }}'>страницу начала работы</a> или какую-либо еще из меню слева.
-        </p>
-    </div><!-- /.error-content -->
-</div><!-- /.error-page -->
+<!--Error Block-->
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="error-v1">
+            <span class="error-v1-title">404</span>
+            <span>Ошибка!</span>
+            <p>Запрашиваемая страница не найдена на этом сервере. Это всё, что мы знаем.</p>
+            <a class="btn-u btn-bordered" href="{{ action('Marketing\MainController@index') }}">На главную</a>
+        </div>
+    </div>
+</div>
+<!--End Error Block-->
 @stop
