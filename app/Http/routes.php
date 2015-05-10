@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('admin', 'Admin\DashboardController@getIndex');
+Route::get('admin', ['middleware' => 'auth', 'Admin\DashboardController@getIndex']);
 
 // Роут контроллера авторизации, middleware указан в его конструкторе
 Route::controller('admin/auth', 'Admin\Auth\AuthController');
@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::controllers([
         'dashboard' => 'DashboardController',
         'news' => 'NewsController',
+        'main/article' => 'MainArticleController'
     ]);
 });
 
@@ -30,5 +31,3 @@ Route::get('main', 'Marketing\MainController@index');
 Route::controller('news', 'Marketing\NewsController');
 
 Route::get('home', 'HomeController@index');
-
-

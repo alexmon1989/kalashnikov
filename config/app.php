@@ -148,7 +148,9 @@ return [
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Pingpong\Widget\WidgetServiceProvider',
         'Barryvdh\Elfinder\ElfinderServiceProvider',
-        'Intervention\Image\ImageServiceProvider'
+        'Intervention\Image\ImageServiceProvider',
+        'Orchestra\Memory\MemoryServiceProvider',
+        'Orchestra\Memory\CommandServiceProvider',
 	],
 
 	/*
@@ -198,7 +200,8 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
         'Widget'    => 'Pingpong\Widget\WidgetFacade',
-        'Image'     => 'Intervention\Image\Facades\Image'
+        'Image'     => 'Intervention\Image\Facades\Image',
+        'Memory'    => 'Orchestra\Support\Facades\Memory',
 
 	],
 

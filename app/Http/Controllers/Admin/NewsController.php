@@ -9,14 +9,16 @@ use App\News;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\StoreNewsRequest;
 use Intervention\Image\Facades\Image;
+use Orchestra\Support\Facades\Memory;
 
 class NewsController extends Controller {
 
-    protected $thumb_dest;
+    // Расположение картинок-превью новостей
+    protected $thumbDest;
 
     public function __construct()
     {
-       $this->thumb_dest = public_path('img/thumb/');
+       $this->thumbDest = public_path('img/thumb/');
     }
 
 	/**
@@ -26,6 +28,7 @@ class NewsController extends Controller {
 	 */
 	public function getIndex()
 	{
+        //dd(Memory::get('site.author', 'Taylor1'));
         $data['news'] = News::all();
 
 		return view('admin.news.index', $data);
@@ -123,7 +126,7 @@ class NewsController extends Controller {
         }
 
         // Удаляем изображение
-        unlink($this->thumb_dest.$news->thumbnail);
+        unlink($this->thumbDest.$news->thumbnail);
 
         $news->delete();
 
@@ -142,12 +145,14 @@ class NewsController extends Controller {
         // Загруженный файл
         $upload_file = Input::file('thumbnail');
 
-        Image::make($upload_file)->resize(973, 615)->save($this->thumb_dest.$name.'.'.$upload_file->getClientOriginalExtension());
+        Image::make($upload_file)
+            ->resize(973, 615)
+            ->save($this->thumbDest.$name.'.'.$upload_file->getClientOriginalExtension());
 
         // Если есть старый файл, то удаляем его
         if ($old_name)
         {
-            unlink( $this->thumb_dest.$old_name );
+            unlink( $this->thumbDest.$old_name );
         }
 
         return $name.'.'.$upload_file->getClientOriginalExtension();
