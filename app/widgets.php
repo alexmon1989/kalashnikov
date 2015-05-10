@@ -1,6 +1,7 @@
 <?php
 
 use App\News;
+use App\Article;
 
 // Виджет слайдера
 Widget::register('slider', function()
@@ -50,7 +51,12 @@ Widget::register('gallery', function()
 // Виджет service-block
 Widget::register('service', function()
 {
-    return view('marketing.widgets.service');
+    // Получение данных блоков
+    $data['left_block'] = Article::where('type', '=', 'service_left')->first();
+    $data['middle_block'] = Article::where('type', '=', 'service_middle')->first();
+    $data['right_block'] = Article::where('type', '=', 'service_right')->first();
+
+    return view('marketing.widgets.service', $data);
 });
 
 // Виджет последних новостей в футере

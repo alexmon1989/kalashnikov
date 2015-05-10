@@ -22,7 +22,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::controllers([
         'dashboard' => 'DashboardController',
         'news' => 'NewsController',
-        'main/article' => 'MainArticleController'
+        'main/article' => 'MainArticleController',
+        'main/info-blocks' => 'InfoBlocksController',
     ]);
 });
 

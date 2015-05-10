@@ -39,4 +39,8 @@ CKEDITOR.editorConfig = function( config ) {
     config.filebrowserBrowseUrl = '/kalashnikov/public/elfinder/ckeditor';
 
     config.extraPlugins = 'youtube';
+
+    config.allowedContent = true;
+
+    config.protectedSource.push(/<i[^>]*><\/i>/g);
 };

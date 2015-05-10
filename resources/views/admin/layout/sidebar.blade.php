@@ -29,7 +29,9 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Информационные блоки</a></li>
+                    <li class="{{ Request::segment(3) == 'info-blocks' ? 'active' : '' }}">
+                        <a href="{{ action('Admin\InfoBlocksController@getIndex') }}"><i class="fa fa-circle-o"></i> Информационные блоки</a>
+                    </li>
                     <li class="{{ Request::segment(3) == 'article' ? 'active' : '' }}">
                         <a href="{{ action('Admin\MainArticleController@getIndex') }}"><i class="fa fa-circle-o"></i> Главная статья</a>
                     </li>
