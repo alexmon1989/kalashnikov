@@ -2,7 +2,7 @@
 <div class="header">
     <div class="container">
         <!-- Logo -->
-        <a class="logo" href="index.html">
+        <a class="logo" href="{{ action('Marketing\MainController@index') }}">
             <img src="{{ asset('img/logo1-default.png') }}" alt="Логотип">
         </a>
         <!-- End Logo -->
@@ -20,7 +20,7 @@
         <div class="container">
             <ul class="nav navbar-nav">
                 <li class="{{ Request::segment(1) == 'main' || Request::segment(1) == '' ? 'active' : '' }}"><a href="{{ action('Marketing\MainController@index') }}">Главная</a></li>
-                <li><a href="index.html">О компании</a></li>
+                <li class="{{ Request::segment(1) == 'about' ? 'active' : '' }}"><a href="{{ action('Marketing\AboutController@getIndex') }}">О компании</a></li>
                 <li class="{{ Request::segment(1) == 'news' ? 'active' : '' }}"><a href="{{ action('Marketing\NewsController@getIndex') }}">Новости</a></li>
                 <li><a href="index.html">Продукция</a></li>
                 <li><a href="index.html">Галерея</a></li>

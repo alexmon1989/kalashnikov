@@ -44,6 +44,18 @@
                 </a>
             </li>
 
+            <li class="{{ Request::segment(2) == 'about' ? 'active' : '' }}">
+                <a href="{{ action('Admin\AboutController@getIndex') }}"><i class="fa fa-building"></i> О Компании</a>
+            </li>
+
+            <li><a href="#"><i class="fa fa-cogs"></i> Контакты</a></li>
+
+            <li><a href="#"><i class="fa fa-cogs"></i> Фотогалерея</a></li>
+
+            <li><a href="#"><i class="fa fa-cogs"></i> Опрос</a></li>
+
+            <li><a href="#"><i class="fa fa-cogs"></i> Наши клиенты</a></li>
+
             <li><a href="#"><i class="fa fa-cogs"></i> Настройки</a></li>
         </ul>
     </section>

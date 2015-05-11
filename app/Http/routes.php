@@ -24,11 +24,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         'news' => 'NewsController',
         'main/article' => 'MainArticleController',
         'main/info-blocks' => 'InfoBlocksController',
+        'about' => 'AboutController',
     ]);
 });
 
 Route::get('/', 'Marketing\MainController@index');
 Route::get('main', 'Marketing\MainController@index');
 Route::controller('news', 'Marketing\NewsController');
+Route::controller('about', 'Marketing\AboutController');
 
 Route::get('home', 'HomeController@index');

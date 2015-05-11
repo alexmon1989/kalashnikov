@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Support\Facades\Request;
 use Symfony\Component\Debug\ExceptionHandler as SymfonyDisplayer;
-
+use Illuminate\Support\Facades\Auth;
 
 class Handler extends ExceptionHandler {
 
@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler {
         $status = $e->getStatusCode();
 
         $prefix = '';
-        if (Request::segment(1) == 'admin')
+        if (Request::segment(1) == 'admin' and Auth::check())
         {
             $prefix = 'admin.';
         }

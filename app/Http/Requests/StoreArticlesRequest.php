@@ -24,6 +24,11 @@ class StoreArticlesRequest extends Request {
 	 */
 	public function rules()
 	{
+        // Если редактируется статья "О Компании", то Название - не обязательное поле
+        if (Request::segment(2) == 'about')
+        {
+            $this->rules['title'] = '';
+        }
 		return $this->rules;
 	}
 
