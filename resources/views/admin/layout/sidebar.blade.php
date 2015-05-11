@@ -64,7 +64,9 @@
                 </ul>
             </li>
 
-            <li><a href="#"><i class="fa fa-cogs"></i> Фотогалерея</a></li>
+            <li class="{{ Request::segment(2) == 'gallery' ? 'active' : '' }}">
+                <a href="{{ action('Admin\GalleryCategoriesController@getIndex') }}"><i class="fa fa-image"></i> Фотогалерея</a>
+            </li>
 
             <li><a href="#"><i class="fa fa-cogs"></i> Опрос</a></li>
 

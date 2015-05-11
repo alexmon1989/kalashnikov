@@ -27,6 +27,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         'about' => 'AboutController',
         'contacts/info' => 'ContactsInfoController',
         'contacts/messages' => 'ContactsMessagesController',
+        'gallery/categories' => 'GalleryCategoriesController',
+        'gallery/images' => 'GalleryImagesController',
     ]);
 });
 

@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="item">
-                    <img src="{{ asset('img/gallery/1.jpg') }}" alt="">
+                    <a href="http://google.com"><img src="{{ asset('img/gallery/1.jpg') }}" alt=""></a>
                     <div class="carousel-caption">
                         <p>Фотографии с выставки Prodexpo.</p>
                     </div>
