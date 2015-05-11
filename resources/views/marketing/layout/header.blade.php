@@ -24,7 +24,7 @@
                 <li class="{{ Request::segment(1) == 'news' ? 'active' : '' }}"><a href="{{ action('Marketing\NewsController@getIndex') }}">Новости</a></li>
                 <li><a href="index.html">Продукция</a></li>
                 <li><a href="index.html">Галерея</a></li>
-                <li><a href="index.html">Контакты</a></li>
+                <li class="{{ Request::segment(1) == 'contacts' ? 'active' : '' }}"><a href="{{ action('Marketing\ContactsController@getIndex') }}">Контакты</a></li>
 
                 <!-- Search Block -->
                 <li>

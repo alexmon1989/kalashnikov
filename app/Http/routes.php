@@ -25,12 +25,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         'main/article' => 'MainArticleController',
         'main/info-blocks' => 'InfoBlocksController',
         'about' => 'AboutController',
+        'contacts/info' => 'ContactsInfoController',
+        'contacts/messages' => 'ContactsMessagesController',
     ]);
 });
 
+// Группа роутов польз. части
 Route::get('/', 'Marketing\MainController@index');
 Route::get('main', 'Marketing\MainController@index');
 Route::controller('news', 'Marketing\NewsController');
 Route::controller('about', 'Marketing\AboutController');
+Route::controller('contacts', 'Marketing\ContactsController');
 
 Route::get('home', 'HomeController@index');

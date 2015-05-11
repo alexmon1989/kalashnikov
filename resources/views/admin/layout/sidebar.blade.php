@@ -48,7 +48,21 @@
                 <a href="{{ action('Admin\AboutController@getIndex') }}"><i class="fa fa-building"></i> О Компании</a>
             </li>
 
-            <li><a href="#"><i class="fa fa-cogs"></i> Контакты</a></li>
+            <li class="treeview {{ Request::segment(2) == 'contacts' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-phone"></i>
+                    <span>Контакты</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ Request::segment(3) == 'info' ? 'active' : '' }}">
+                        <a href="{{ action('Admin\ContactsInfoController@getIndex') }}"><i class="fa fa-circle-o"></i> Статья и контактные данные</a>
+                    </li>
+                    <li class="{{ Request::segment(3) == 'messages' ? 'active' : '' }}">
+                        <a href="{{ action('Admin\ContactsMessagesController@getIndex') }}"><i class="fa fa-circle-o"></i> Сообщения (настройки)</a>
+                    </li>
+                </ul>
+            </li>
 
             <li><a href="#"><i class="fa fa-cogs"></i> Фотогалерея</a></li>
 

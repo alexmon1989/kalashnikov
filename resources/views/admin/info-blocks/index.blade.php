@@ -21,25 +21,25 @@
         </div>
     </div>
     <div class="box-body">
-         <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#left-block">Левый блок</a></li>
-                <li><a data-toggle="tab" href="#middle-block">Центральный блок</a></li>
-                <li><a data-toggle="tab" href="#right-block">Правый блок</a></li>
-            </ul>
-            <div class="tab-content">
-                <div id="left-block" class="tab-pane fade in active">
-                    <h3>Левый блок</h3>
-                    @include('admin.info-blocks._form', ['article' => $left_block])
-                </div>
-                <div id="middle-block" class="tab-pane fade">
-                    <h3>Центральный блок</h3>
-                    @include('admin.info-blocks._form', ['article' => $middle_block])
-                </div>
-                <div id="right-block" class="tab-pane fade">
-                    <h3>Правый блок</h3>
-                    @include('admin.info-blocks._form', ['article' => $right_block])
-                </div>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#left-block">Левый блок</a></li>
+            <li><a data-toggle="tab" href="#middle-block">Центральный блок</a></li>
+            <li><a data-toggle="tab" href="#right-block">Правый блок</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="left-block" class="tab-pane fade in active">
+                <h3>Левый блок</h3>
+                @include('admin.info-blocks._form', ['article' => $left_block])
             </div>
+            <div id="middle-block" class="tab-pane fade">
+                <h3>Центральный блок</h3>
+                @include('admin.info-blocks._form', ['article' => $middle_block])
+            </div>
+            <div id="right-block" class="tab-pane fade">
+                <h3>Правый блок</h3>
+                @include('admin.info-blocks._form', ['article' => $right_block])
+            </div>
+        </div>
     </div><!-- /.box-body -->
     <div class="box-footer">
 

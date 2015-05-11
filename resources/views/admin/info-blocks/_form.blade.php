@@ -1,4 +1,4 @@
-<form role="form" method="post" enctype="multipart/form-data">
+<form role="form" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <div class="box-body">
         <div class="form-group">
