@@ -81,7 +81,7 @@ class GalleryImagesController extends Controller {
         $data['category']->images()->save($image);
 
         return redirect()->action('Admin\GalleryImagesController@getEdit', array('id' => $image->id))
-            ->with('success', 'Новость успешно сохранена.');
+            ->with('success', 'Изображение успешно создано.');
 	}
 
     /**
@@ -92,7 +92,15 @@ class GalleryImagesController extends Controller {
      */
     public function getEdit($id)
     {
-        //
+        // Получаем изображение и его категорию
+        $data['image'] = GalleryImage::find($id);
+        if (empty($data['image']))
+        {
+            abort(404);
+        }
+        $data['category'] = $data['image']->category;
+
+        return view('admin.gallery.images.edit', $data);
     }
 
     /**
@@ -101,9 +109,26 @@ class GalleryImagesController extends Controller {
      * @param $id id изображения
      * @return Response
      */
-    public function postEdit($id)
+    public function postEdit(StoreGalleryImagesRequest $request, $id)
     {
-        //
+        // Получаем изображение
+        $image = GalleryImage::find($id);
+        if (empty($image))
+        {
+            abort(404);
+        }
+
+        // Изменяем данные и сохраняем
+        $image->description = trim(Input::get('description'));
+        $image->is_on_main = Input::get('is_on_main', FALSE);
+        if ($request->hasFile('file_name'))
+        {
+            $image->file_name = $this->saveImageToDisk($image->file_name);
+        }
+        $image->save();
+
+        return redirect()->action('Admin\GalleryImagesController@getEdit', array('id' => $image->id))
+            ->with('success', 'Изображение успешно сохранено.');
     }
 
     /**
@@ -114,7 +139,18 @@ class GalleryImagesController extends Controller {
      */
     public function getDelete($id)
     {
-        //
+        // Получаем изображение
+        $image = GalleryImage::find($id);
+        if (empty($image))
+        {
+            abort(404);
+        }
+
+        // Удаляем вместе с файлом
+        unlink( $this->thumbDest . $image->file_name );
+        $image->delete();
+
+        return redirect()->back()->with('success', 'Изображение успешно удалено.');
     }
 
 

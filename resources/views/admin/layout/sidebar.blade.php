@@ -68,6 +68,10 @@
                 <a href="{{ action('Admin\GalleryCategoriesController@getIndex') }}"><i class="fa fa-image"></i> Фотогалерея</a>
             </li>
 
+            <li class="{{ Request::segment(2) == 'slider' ? 'active' : '' }}">
+                <a href="{{ action('Admin\SliderController@getIndex') }}"><i class="fa fa-image"></i> Слайдер</a>
+            </li>
+
             <li><a href="#"><i class="fa fa-cogs"></i> Опрос</a></li>
 
             <li><a href="#"><i class="fa fa-cogs"></i> Наши клиенты</a></li>

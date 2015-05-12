@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "817a58163d085fdb4f5d96bb41ee9ab1",
+    "hash": "68e491c29fb7882da85ff5698b953b8e",
     "packages": [
         {
             "name": "barryvdh/elfinder-builds",
@@ -492,16 +492,16 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "6626d7624ac0895137a38c123943afedd0827efc"
+                "reference": "79f0a35da7d4f75bb85d9c04513dd5929e21f75e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/6626d7624ac0895137a38c123943afedd0827efc",
-                "reference": "6626d7624ac0895137a38c123943afedd0827efc",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/79f0a35da7d4f75bb85d9c04513dd5929e21f75e",
+                "reference": "79f0a35da7d4f75bb85d9c04513dd5929e21f75e",
                 "shasum": ""
             },
             "require": {
@@ -544,7 +544,60 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-04-24 14:50:48"
+            "time": "2015-05-09 16:06:30"
+        },
+        {
+            "name": "intervention/imagecache",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/imagecache.git",
+                "reference": "20524340a886deb7ee6a917e419305c0f68e2649"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/imagecache/zipball/20524340a886deb7ee6a917e419305c0f68e2649",
+                "reference": "20524340a886deb7ee6a917e419305c0f68e2649",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "~4|~5",
+                "illuminate/filesystem": "~4|~5",
+                "intervention/image": "dev-master|~2,>=2.2.0",
+                "jeremeamia/superclosure": "~1|~2",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "0.9.*",
+                "phpunit/phpunit": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Image\\": "src/Intervention/Image"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.net",
+                    "homepage": "http://olivervogel.net/"
+                }
+            ],
+            "description": "Caching extension for the Intervention Image Class",
+            "homepage": "http://image.intervention.io",
+            "keywords": [
+                "cache",
+                "gd",
+                "image",
+                "imagick",
+                "laravel"
+            ],
+            "time": "2015-04-24 14:52:35"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -734,16 +787,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "5.0.30",
+            "version": "v5.0.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c7ffbf1fd4895ac4cdac551265d635d995346d97"
+                "reference": "db0a7400465df159ba8c6eaa954f97f50bc19687"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c7ffbf1fd4895ac4cdac551265d635d995346d97",
-                "reference": "c7ffbf1fd4895ac4cdac551265d635d995346d97",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/db0a7400465df159ba8c6eaa954f97f50bc19687",
+                "reference": "db0a7400465df159ba8c6eaa954f97f50bc19687",
                 "shasum": ""
             },
             "require": {
@@ -856,7 +909,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-05-08 19:11:13"
+            "time": "2015-05-11 22:15:00"
         },
         {
             "name": "league/flysystem",
@@ -1258,16 +1311,16 @@
         },
         {
             "name": "orchestra/support",
-            "version": "v3.0.2",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/support.git",
-                "reference": "302b1fcad32f4745358b40b1b2998b8ac33bd489"
+                "reference": "aaf519f2984b2aab610f60a1c377e7eabbd72177"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/support/zipball/302b1fcad32f4745358b40b1b2998b8ac33bd489",
-                "reference": "302b1fcad32f4745358b40b1b2998b8ac33bd489",
+                "url": "https://api.github.com/repos/orchestral/support/zipball/aaf519f2984b2aab610f60a1c377e7eabbd72177",
+                "reference": "aaf519f2984b2aab610f60a1c377e7eabbd72177",
                 "shasum": ""
             },
             "require": {
@@ -1283,15 +1336,15 @@
             "require-dev": {
                 "illuminate/database": "5.0.*",
                 "illuminate/events": "5.0.*",
+                "illuminate/routing": "5.0.*",
                 "illuminate/session": "5.0.*",
                 "illuminate/validation": "5.0.*",
-                "mockery/mockery": "0.9.*",
-                "symfony/http-kernel": "2.6.*"
+                "mockery/mockery": "0.9.*"
             },
             "suggest": {
-                "laravel/framework": "Allow using orchestra/support component outside of Orchestra Platform",
-                "orchestra/foundation": "Allow using orchestra/support with Orchestra Platform",
-                "orchestra/messages": "Allow using Messages component"
+                "laravel/framework": "Allow using orchestra/support component outside of Orchestra Platform (~5.0).",
+                "orchestra/foundation": "Allow using orchestra/support with Orchestra Platform (~3.0).",
+                "orchestra/messages": "Allow using Messages component (~3.0)."
             },
             "type": "library",
             "extra": {
@@ -1327,7 +1380,7 @@
                 "utilities",
                 "validator"
             ],
-            "time": "2015-03-18 10:26:10"
+            "time": "2015-05-12 12:41:34"
         },
         {
             "name": "phpdocumentor/reflection-docblock",

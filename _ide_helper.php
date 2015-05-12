@@ -1,7 +1,7 @@
 <?php
 /**
  * An helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.0.30 on 2015-05-11.
+ * Generated for Laravel 5.0.31 on 2015-05-12.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -4623,7 +4623,7 @@ namespace {
         /**
          * Register an event subscriber with the dispatcher.
          *
-         * @param string $subscriber
+         * @param object|string $subscriber
          * @return void 
          * @static 
          */
@@ -11755,6 +11755,122 @@ namespace {
          */
         public static function cache($callback, $lifetime = null, $returnObj = false){
             return \Intervention\Image\ImageManager::cache($callback, $lifetime, $returnObj);
+        }
+        
+    }
+
+
+    class Memory extends \Orchestra\Support\Facades\Memory{
+        
+        /**
+         * Get the default driver.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDefaultDriver(){
+            return \Orchestra\Memory\MemoryManager::getDefaultDriver();
+        }
+        
+        /**
+         * Set the default driver.
+         *
+         * @param string $name
+         * @return void 
+         * @static 
+         */
+        public static function setDefaultDriver($name){
+            \Orchestra\Memory\MemoryManager::setDefaultDriver($name);
+        }
+        
+        /**
+         * Get configuration values.
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getConfig(){
+            return \Orchestra\Memory\MemoryManager::getConfig();
+        }
+        
+        /**
+         * Set configuration.
+         *
+         * @param array $config
+         * @return $this 
+         * @static 
+         */
+        public static function setConfig($config){
+            return \Orchestra\Memory\MemoryManager::setConfig($config);
+        }
+        
+        /**
+         * Make default driver or fallback to runtime.
+         *
+         * @param string $fallbackName
+         * @return \Orchestra\Contracts\Memory\Provider 
+         * @static 
+         */
+        public static function makeOrFallback($fallbackName = 'orchestra'){
+            return \Orchestra\Memory\MemoryManager::makeOrFallback($fallbackName);
+        }
+        
+        /**
+         * Loop every instance and execute finish method (if available).
+         *
+         * @return void 
+         * @static 
+         */
+        public static function finish(){
+            \Orchestra\Memory\MemoryManager::finish();
+        }
+        
+        /**
+         * Create a new instance.
+         *
+         * @param string $driver
+         * @return object 
+         * @static 
+         */
+        public static function make($driver = null){
+            //Method inherited from \Orchestra\Support\Manager            
+            return \Orchestra\Memory\MemoryManager::make($driver);
+        }
+        
+        /**
+         * Get a driver instance.
+         *
+         * @param string $driver
+         * @return mixed 
+         * @static 
+         */
+        public static function driver($driver = null){
+            //Method inherited from \Illuminate\Support\Manager            
+            return \Orchestra\Memory\MemoryManager::driver($driver);
+        }
+        
+        /**
+         * Register a custom driver creator Closure.
+         *
+         * @param string $driver
+         * @param \Closure $callback
+         * @return $this 
+         * @static 
+         */
+        public static function extend($driver, $callback){
+            //Method inherited from \Illuminate\Support\Manager            
+            return \Orchestra\Memory\MemoryManager::extend($driver, $callback);
+        }
+        
+        /**
+         * Get all of the created "drivers".
+         *
+         * @return array 
+         * @static 
+         */
+        public static function getDrivers(){
+            //Method inherited from \Illuminate\Support\Manager            
+            return \Orchestra\Memory\MemoryManager::getDrivers();
         }
         
     }

@@ -41,6 +41,8 @@ elixir(function(mix) {
         .copy('resources/assets/plugins/owl-carousel', 'public/plugins/owl-carousel')
         .copy('resources/assets/plugins/sky-forms-pro', 'public/plugins/sky-forms-pro')
         .copy('resources/assets/js/plugins/owl-news-products.js', 'public/js/plugins/owl-news-products.js')
+        .copy('resources/assets/plugins/fancybox/source', 'public/plugins/fancybox/source')
+        .copy('resources/assets/js/plugins/fancy-box.js', 'public/js/plugins/fancy-box.js')
 
         // AdminLTE
         .copy('resources/assets/bower/adminlte/dist', 'public/adminlte/')

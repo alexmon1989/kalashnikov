@@ -11,11 +11,13 @@ class GalleryCategoriesTableSeeder extends Seeder {
 
         GalleryCategory::create(array(
                 'title' => 'Фотоотчёт 11.05.2015',
+                'description' => 'Фотоотчёт 11.05.2015',
             )
         );
 
         GalleryCategory::create(array(
                 'title' => 'Фотоотчёт 12.05.2015',
+                'description' => 'Фотоотчёт 12.05.2015',
             )
         );
     }

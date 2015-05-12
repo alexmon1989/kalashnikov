@@ -44,6 +44,11 @@ class Authenticate {
 			}
 		}
 
+        if ($request->path() == 'admin')
+        {
+            return redirect()->to('admin/dashboard');
+        }
+
 		return $next($request);
 	}
 

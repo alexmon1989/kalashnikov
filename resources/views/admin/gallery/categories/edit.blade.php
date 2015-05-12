@@ -28,3 +28,8 @@
     </div><!-- /.box-footer-->
 </div><!-- /.box -->
 @stop
+
+@section('script')
+<!-- CKEDITOR -->
+<script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
+@stop

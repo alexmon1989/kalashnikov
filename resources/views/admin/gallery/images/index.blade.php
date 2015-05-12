@@ -31,6 +31,7 @@
                     <th>ID</th>
                     <th>Описание</th>
                     <th>Изображение</th>
+                    <th>Показывать на главной</th>
                     <th>Создано</th>
                     <th>Последнее редактирование</th>
                     <th>Действия</th>
@@ -43,6 +44,7 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->description }}</td>
                     <td><img src="{{ action('Admin\GalleryImagesController@getImageThumbnail', array('id' => $item->id)) }}" alt="" /></td>
+                    <td>{!! $item->is_on_main == TRUE ? '<strong>Да</strong>' : 'Нет' !!}</td>
                     <td>{{ date('d.m.Y H:i:s', strtotime($item->created_at)) }}</td>
                     <td>{{ date('d.m.Y H:i:s', strtotime($item->updated_at)) }}</td>
                     <td>

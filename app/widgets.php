@@ -2,11 +2,15 @@
 
 use App\News;
 use App\Article;
+use App\GalleryImage;
+use App\Slider;
 
 // Виджет слайдера
 Widget::register('slider', function()
 {
-    return view('marketing.widgets.slider');
+    $data['sliders'] = Slider::orderBy('order', 'ASC')->get();
+
+    return view('marketing.widgets.slider', $data);
 });
 
 // Виджет новостей на главной странице
@@ -45,7 +49,12 @@ Widget::register('polls', function()
 // Виджет галереи
 Widget::register('gallery', function()
 {
-    return view('marketing.widgets.gallery');
+    // Получаем изображения на главной
+    $data['images'] = GalleryImage::where('is_on_main', '=', 'TRUE')
+                                    ->take(15)
+                                    ->get();
+
+    return view('marketing.widgets.gallery', $data);
 });
 
 // Виджет service-block

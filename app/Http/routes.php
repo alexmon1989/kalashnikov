@@ -29,14 +29,21 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         'contacts/messages' => 'ContactsMessagesController',
         'gallery/categories' => 'GalleryCategoriesController',
         'gallery/images' => 'GalleryImagesController',
+        'slider' => 'SliderController',
     ]);
 });
 
-// Группа роутов польз. части
 Route::get('/', 'Marketing\MainController@index');
 Route::get('main', 'Marketing\MainController@index');
-Route::controller('news', 'Marketing\NewsController');
-Route::controller('about', 'Marketing\AboutController');
-Route::controller('contacts', 'Marketing\ContactsController');
+// Группа роутов польз. части
+Route::group(['namespace' => 'Marketing'], function()
+{
+    Route::controllers([
+        'news' => 'NewsController',
+        'about' => 'AboutController',
+        'contacts' => 'ContactsController',
+        'gallery' => 'GalleryController',
+    ]);
+});
 
-Route::get('home', 'HomeController@index');
+

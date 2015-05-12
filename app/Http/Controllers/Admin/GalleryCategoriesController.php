@@ -63,6 +63,7 @@ class GalleryCategoriesController extends Controller {
 
         // Меняем данные и сохраняем
         $category->title = trim(Input::get('title'));
+        $category->description = trim(Input::get('description'));
         $category->save();
 
         return redirect()->back()->with('success', 'Категория успешно сохранена.');
@@ -79,6 +80,7 @@ class GalleryCategoriesController extends Controller {
         // Создаём и сохраняем
         $category = new GalleryCategory;
         $category->title = trim(Input::get('title'));
+        $category->description = trim(Input::get('description'));
         $category->save();
 
         return redirect()->action('Admin\GalleryCategoriesController@getEdit', array('id' => $category->id))

@@ -3,18 +3,16 @@
         <div class="headline"><h2>Фотогалерея</h2></div>
         <div id="myCarousel" class="carousel slide carousel-v1">
             <div class="carousel-inner">
-                <div class="item active">
-                    <img src="{{ asset('img/gallery/1.jpg') }}" alt="">
+                @foreach($images as $key => $image)
+                <div class="item {{ $key == 0 ? 'active' : ''}}">
+                    <a href="{{ action('Marketing\GalleryController@getCategory', array('id' => $image->category->id)) }}" title="Перейти в категорию">
+                        <img src="{{ asset('img/gallery/'.$image->file_name) }}" alt="{{ $image->description }}">
+                    </a>
                     <div class="carousel-caption">
-                        <p>Фотографии с выставки Prodexpo.</p>
+                        <p>{{ $image->description }}</p>
                     </div>
                 </div>
-                <div class="item">
-                    <a href="http://google.com"><img src="{{ asset('img/gallery/1.jpg') }}" alt=""></a>
-                    <div class="carousel-caption">
-                        <p>Фотографии с выставки Prodexpo.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <div class="carousel-arrow">

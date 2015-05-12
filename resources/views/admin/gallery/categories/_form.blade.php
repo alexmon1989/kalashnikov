@@ -7,6 +7,11 @@
         </div>
     </div><!-- /.box-body -->
 
+    <div class="form-group">
+        <label for="full_text">Описание</label>
+        <textarea id="description" name="description" rows="10" cols="80" class="form-control ckeditor">{{ old('full_text', isset($category) ? $category->description : '') }}</textarea>
+    </div>
+
     <div class="box-footer">
         <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i>&nbsp;&nbsp;Сохранить</button>
     </div>

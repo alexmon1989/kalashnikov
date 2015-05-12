@@ -6,7 +6,7 @@
             'items' => array(
                     array('title' => 'Начало работы', 'action' => 'Admin\DashboardController@getIndex', 'active' => FALSE),
                     array('title' => 'Список категорий фотогалереи', 'action' => 'Admin\GalleryCategoriesController@getIndex', 'active' => FALSE),
-                    array('title' => $category->title, 'action' => 'Admin\GalleryImagesController@getIndex', 'action_params' => array('id' => $category->id), 'active' => FALSE),
+                    array('title' => $category->title, 'action' => 'Admin\GalleryImagesController@getIndex', 'action_params' => array('categoryId' => $category->id), 'active' => FALSE),
                     array('title' => 'Создание изображения', 'action' => '', 'active' => TRUE),
             )
         ])
@@ -25,7 +25,7 @@
         @include('admin.gallery.images._form')
     </div><!-- /.box-body -->
     <div class="box-footer">
-
+        <a href="{{ action('Admin\GalleryImagesController@getIndex', array('categoryId' => $category->id)) }}">Назад к списку фотографий категории</a>
     </div><!-- /.box-footer-->
 </div><!-- /.box -->
 @stop
