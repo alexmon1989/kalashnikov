@@ -5,6 +5,7 @@ use App\Article;
 use App\GalleryImage;
 use App\Slider;
 use App\Client;
+use App\Vote;
 
 // Виджет слайдера
 Widget::register('slider', function()
@@ -47,7 +48,24 @@ Widget::register('clients', function()
 // Виджет голосования
 Widget::register('polls', function()
 {
-    return view('marketing.widgets.polls');
+    // Получаем данные опроса, что стоит на главной
+    $data['vote'] = Vote::where('is_on_main', '=', TRUE)->first();
+    $data['answers'] = json_decode($data['vote']->answers_json);
+
+    // Проверяем может ли юзер голосовать
+    $cookie = Request::cookie('vote_'.$data['vote']->id);
+    if ($cookie == $data['vote']->hash)
+    {
+        // Общее число голосов
+        $data['count'] = 0;
+        foreach ($data['answers'] as $answer)
+        {
+            $data['count'] += $answer->count;
+        }
+        return view('marketing.widgets.votes.results', $data);
+    }
+
+    return view('marketing.widgets.votes.quiz', $data);
 });
 
 // Виджет галереи

@@ -37,6 +37,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
 
 Route::get('/', 'Marketing\MainController@index');
 Route::get('main', 'Marketing\MainController@index');
+Route::post('main/vote', 'Marketing\MainController@vote');
 // Группа роутов польз. части
 Route::group(['namespace' => 'Marketing'], function()
 {

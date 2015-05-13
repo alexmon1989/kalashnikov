@@ -58,7 +58,7 @@ class ClientsController extends Controller {
         $client->save();
 
         return redirect()->action('Admin\ClientsController@getEdit', array('id' => $client->id))
-            ->with('success', 'Слайд успешно создан.');
+            ->with('success', 'Клиент успешно создан.');
     }
 
     /**
@@ -95,7 +95,7 @@ class ClientsController extends Controller {
         $client->save();
 
         return redirect()->action('Admin\ClientsController@getEdit', array('id' => $id))
-            ->with('success', 'Слайд успешно создан.');
+            ->with('success', 'Клиент успешно изменён.');
     }
 
     /**
@@ -113,7 +113,7 @@ class ClientsController extends Controller {
         unlink( $this->thumbDest . $client->file_name );
         $client->delete();
 
-        return redirect()->back()->with('success', 'Слайд успешно удалён.');
+        return redirect()->back()->with('success', 'Клиент успешно удалён.');
     }
 
     /**

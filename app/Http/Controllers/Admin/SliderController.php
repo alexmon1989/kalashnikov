@@ -71,7 +71,7 @@ class SliderController extends Controller {
         $slider->save();
 
         return redirect()->action('Admin\SliderController@getEdit', array('id' => $slider->id))
-            ->with('success', 'Слайд успешно создан.');
+            ->with('success', 'Слайд успешно изменён.');
     }
 
     /**
