@@ -72,9 +72,11 @@
                 <a href="{{ action('Admin\SliderController@getIndex') }}"><i class="fa fa-image"></i> Слайдер</a>
             </li>
 
-            <li><a href="#"><i class="fa fa-cogs"></i> Опрос</a></li>
+            <li class="{{ Request::segment(2) == 'clients' ? 'active' : '' }}">
+                <a href="{{ action('Admin\ClientsController@getIndex') }}"><i class="fa fa-rub"></i> Наши клиенты</a>
+            </li>
 
-            <li><a href="#"><i class="fa fa-cogs"></i> Наши клиенты</a></li>
+            <li><a href="#"><i class="fa fa-cogs"></i> Опрос</a></li>
 
             <li><a href="#"><i class="fa fa-cogs"></i> Настройки</a></li>
         </ul>

@@ -67,7 +67,7 @@ class SliderController extends Controller {
         }
         $slider->url = trim($request->get('url'));
         $slider->btn_text = trim($request->get('btn_text'));
-        $slider->enabled = $request->get('enabled');
+        $slider->enabled = $request->get('enabled', 0);
         $slider->save();
 
         return redirect()->action('Admin\SliderController@getEdit', array('id' => $slider->id))
@@ -100,7 +100,7 @@ class SliderController extends Controller {
         $slider->file_name = $this->saveImageToDisk();
         $slider->url = trim($request->get('url'));
         $slider->btn_text = trim($request->get('btn_text'));
-        $slider->enabled = $request->get('enabled');
+        $slider->enabled = $request->get('enabled', 0);
         // Присваем макс. порядок + 1
         $slider->order = Slider::max('order') + 1;
         $slider->save();

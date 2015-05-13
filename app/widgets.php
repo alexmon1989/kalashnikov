@@ -4,6 +4,7 @@ use App\News;
 use App\Article;
 use App\GalleryImage;
 use App\Slider;
+use App\Client;
 
 // Виджет слайдера
 Widget::register('slider', function()
@@ -37,7 +38,10 @@ Widget::register('product_categories', function()
 // Виджет клиентов
 Widget::register('clients', function()
 {
-    return view('marketing.widgets.clients');
+    // Получение клиентов из БД
+    $data['clients'] = Client::orderBy('created_at', 'DESC')->get();
+
+    return view('marketing.widgets.clients', $data);
 });
 
 // Виджет голосования
@@ -50,7 +54,7 @@ Widget::register('polls', function()
 Widget::register('gallery', function()
 {
     // Получаем изображения на главной
-    $data['images'] = GalleryImage::where('is_on_main', '=', 'TRUE')
+    $data['images'] = GalleryImage::where('is_on_main', '=', TRUE)
                                     ->take(15)
                                     ->get();
 
