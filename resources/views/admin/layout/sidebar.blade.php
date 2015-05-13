@@ -76,9 +76,20 @@
                 <a href="{{ action('Admin\ClientsController@getIndex') }}"><i class="fa fa-rub"></i> Наши клиенты</a>
             </li>
 
-            <li><a href="#"><i class="fa fa-cogs"></i> Опрос</a></li>
+            <li class="{{ Request::segment(2) == 'votes' ? 'active' : '' }}">
+                <a href="{{ action('Admin\VotesController@getIndex') }}"><i class="fa fa-question "></i> Опросы</a>
+            </li>
 
             <li><a href="#"><i class="fa fa-cogs"></i> Настройки</a></li>
+        </ul>
+
+        <ul class="sidebar-menu">
+            <li class="header">Ссылки</li>
+            <li>
+                <a href="{{ action('Marketing\MainController@index') }}" title="Открыть в новой вкладке" target="_blank">
+                    <i class="fa fa-external-link"></i> <span>Перейти на сайт</span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

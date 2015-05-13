@@ -15,6 +15,10 @@ class CreateVotesTable extends Migration {
 		Schema::create('votes', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('question');
+			$table->text('answers_json');
+			$table->string('hash');
+			$table->boolean('is_on_main')->default(FALSE);
 			$table->timestamps();
 		});
 	}
