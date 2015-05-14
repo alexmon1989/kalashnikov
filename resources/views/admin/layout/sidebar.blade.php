@@ -80,7 +80,9 @@
                 <a href="{{ action('Admin\VotesController@getIndex') }}"><i class="fa fa-question "></i> Опросы</a>
             </li>
 
-            <li><a href="#"><i class="fa fa-cogs"></i> Настройки</a></li>
+            <li class="{{ Request::segment(2) == 'settings' ? 'active' : '' }}">
+                <a href="{{ action('Admin\SettingsController@getIndex') }}"><i class="fa fa-cogs "></i> Настройки</a>
+            </li>
         </ul>
 
         <ul class="sidebar-menu">

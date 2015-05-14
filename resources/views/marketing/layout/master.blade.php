@@ -12,6 +12,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    @yield('meta')
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.png">
 

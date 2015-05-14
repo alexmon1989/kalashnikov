@@ -1,5 +1,9 @@
 @extends('marketing.layout.master')
 
+@section('meta')
+<meta name="csrf_token" content="{!! $encrypted_csrf_token !!}"/>
+@stop
+
 @section('top_content')
     @slider()
     @include('marketing.layout.purchase')

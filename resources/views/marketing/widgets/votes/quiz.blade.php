@@ -24,7 +24,7 @@
         </div>
         @endif
 
-        <form method="post" class="sky-form" action="http://localhost/kalashnikov/public/main/vote">
+        <form method="post" class="sky-form" action="{{ action('Marketing\MainController@vote') }}">
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

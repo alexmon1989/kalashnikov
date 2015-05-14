@@ -124,7 +124,8 @@ return [
 		'Illuminate\Encryption\EncryptionServiceProvider',
 		'Illuminate\Filesystem\FilesystemServiceProvider',
 		'Illuminate\Foundation\Providers\FoundationServiceProvider',
-		'Illuminate\Hashing\HashServiceProvider',
+        'Illuminate\Hashing\HashServiceProvider',
+        'Illuminate\Html\HtmlServiceProvider',
 		'Illuminate\Mail\MailServiceProvider',
 		'Illuminate\Pagination\PaginationServiceProvider',
 		'Illuminate\Pipeline\PipelineServiceProvider',
@@ -202,6 +203,8 @@ return [
         'Widget'    => 'Pingpong\Widget\WidgetFacade',
         'Image'     => 'Intervention\Image\Facades\Image',
         'Memory'    => 'Orchestra\Support\Facades\Memory',
+        'Form'      => 'Illuminate\Html\FormFacade',
+        'HTML'      => 'Illuminate\Html\HtmlFacade'
 
 	],
 

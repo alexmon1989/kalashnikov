@@ -65,7 +65,7 @@
         <div class="pull-right hidden-xs">
           <b>Версия</b> 1.0.0
         </div>
-        <strong>2015 &copy; ИП Калашников.</strong> Все права защищены.
+        <strong>{{ date('Y') }} &copy; ИП Калашников.</strong> Все права защищены.
       </footer>
     </div><!-- ./wrapper -->
 

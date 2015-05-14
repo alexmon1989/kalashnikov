@@ -8,9 +8,9 @@
         <h3 class="heading-sm">{{ $vote->question }}</h3>
 
         @foreach($answers as $answer)
-        <h3 class="heading-xs">{{ $answer->answer }} <span class="pull-right">{{ round($answer->count*100)/$count }}%</span></h3>
+        <h3 class="heading-xs">{{ $answer->answer }} <span class="pull-right">{{ round(($answer->count*100)/$count, 1) }}%</span></h3>
         <div class="progress progress-u progress-sm">
-            <div style="width: {{ round($answer->count*100)/$count }}%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="{{ round($answer->count*100)/$count }}" role="progressbar" class="progress-bar progress-bar-u">
+            <div style="width: {{ round(($answer->count*100)/$count, 1) }}%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="{{ round(($answer->count*100)/$count, 1) }}" role="progressbar" class="progress-bar progress-bar-u">
             </div>
         </div>
         @endforeach

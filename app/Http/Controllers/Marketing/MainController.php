@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use App\Article;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Crypt;
+use App\Http\Requests\PriceRequest;
+use Illuminate\Support\Facades\Mail;
+use Orchestra\Support\Facades\Memory;
 
 /**
  * Контроллер для главной страницы
@@ -21,6 +25,7 @@ class MainController extends Controller {
 	{
         // Главная статья
         $data['article'] = Article::where('type', '=', 'main_article')->first();
+        $data['encrypted_csrf_token'] = Crypt::encrypt(csrf_token());
 
         return view('marketing.main.page', $data);
 	}
@@ -91,6 +96,26 @@ class MainController extends Controller {
         // Ставим "метку" на комп. юзера, чтоб он больше не мог голосовать в этом опросе
         // Возвращаем назад на главную к опросу
         return redirect()->to('main#votes')->with('success', 'Голос учтён.')->withCookie(cookie()->forever('vote_'.$vote->id, $vote->hash));
+    }
+
+    /**
+     * Обработчик запроса на запрос прайс-листа
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function priceRequest(PriceRequest $request)
+    {
+        // Отправляем письмо от указанного в форме адреса с темой "Запрос прайс-листа"
+        $subject = 'Запрос прайс-листа с веб-сайта kalashnikovcom.ru';
+        Mail::raw($subject, function($message) use (&$request, &$subject)
+        {
+            $message->from($request->get('email'), $request->get('name'));
+            $message->subject($subject);
+
+            $message->to(Memory::get('price_request.email_to', 'kalashnikov@kalashnikovcom.ru'));
+        });
+
+        return response()->json([]);
     }
 
 }

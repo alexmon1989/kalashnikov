@@ -20,32 +20,34 @@ Route::controller('admin/auth', 'Admin\Auth\AuthController');
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function()
 {
     Route::controllers([
-        'dashboard' => 'DashboardController',
-        'news' => 'NewsController',
-        'main/article' => 'MainArticleController',
-        'main/info-blocks' => 'InfoBlocksController',
-        'about' => 'AboutController',
-        'contacts/info' => 'ContactsInfoController',
-        'contacts/messages' => 'ContactsMessagesController',
-        'gallery/categories' => 'GalleryCategoriesController',
-        'gallery/images' => 'GalleryImagesController',
-        'slider' => 'SliderController',
-        'clients' => 'ClientsController',
-        'votes' => 'VotesController',
+        'dashboard'             => 'DashboardController',
+        'news'                  => 'NewsController',
+        'main/article'          => 'MainArticleController',
+        'main/info-blocks'      => 'InfoBlocksController',
+        'about'                 => 'AboutController',
+        'contacts/info'         => 'ContactsInfoController',
+        'contacts/messages'     => 'ContactsMessagesController',
+        'gallery/categories'    => 'GalleryCategoriesController',
+        'gallery/images'        => 'GalleryImagesController',
+        'slider'                => 'SliderController',
+        'clients'               => 'ClientsController',
+        'votes'                 => 'VotesController',
+        'settings'              => 'SettingsController'
     ]);
 });
 
 Route::get('/', 'Marketing\MainController@index');
 Route::get('main', 'Marketing\MainController@index');
 Route::post('main/vote', 'Marketing\MainController@vote');
+Route::post('main/price-request', 'Marketing\MainController@priceRequest');
 // Группа роутов польз. части
 Route::group(['namespace' => 'Marketing'], function()
 {
     Route::controllers([
-        'news' => 'NewsController',
-        'about' => 'AboutController',
-        'contacts' => 'ContactsController',
-        'gallery' => 'GalleryController',
+        'news'      => 'NewsController',
+        'about'     => 'AboutController',
+        'contacts'  => 'ContactsController',
+        'gallery'   => 'GalleryController',
     ]);
 });
 
