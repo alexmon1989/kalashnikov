@@ -10,7 +10,7 @@ use App\Vote;
 // Виджет слайдера
 Widget::register('slider', function()
 {
-    $data['sliders'] = Slider::orderBy('order', 'ASC')->get();
+    $data['sliders'] = Slider::where('enabled', '=', TRUE)->orderBy('order', 'ASC')->get();
 
     return view('marketing.widgets.slider', $data);
 });
@@ -40,7 +40,8 @@ Widget::register('product_categories', function()
 Widget::register('clients', function()
 {
     // Получение клиентов из БД
-    $data['clients'] = Client::orderBy('created_at', 'DESC')->get();
+    $data['clients'] = Client::where('enabled', '=', TRUE)
+                            ->orderBy('created_at', 'DESC')->get();
 
     return view('marketing.widgets.clients', $data);
 });
