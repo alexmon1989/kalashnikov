@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('admin/profile/{category}', function(App\ProductCategory $category)
+{
+    dd($category);
+});
+
 Route::get('admin', ['middleware' => 'auth', 'Admin\DashboardController@getIndex']);
 
 // Роут контроллера авторизации, middleware указан в его конструкторе
@@ -32,7 +37,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         'slider'                => 'SliderController',
         'clients'               => 'ClientsController',
         'votes'                 => 'VotesController',
-        'settings'              => 'SettingsController'
+        'settings'              => 'SettingsController',
+        'products/categories'              => 'ProductCategoriesController',
     ]);
 });
 

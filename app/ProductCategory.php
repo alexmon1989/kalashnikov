@@ -4,12 +4,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductCategory extends Model {
 
-    public function categories()
+    public function childCategories()
     {
         return $this->hasMany('App\ProductCategory', 'parent_id');
     }
 
-    public function category()
+    public function parentCategory()
     {
         return $this->belongsTo('App\ProductCategory', 'parent_id');
     }

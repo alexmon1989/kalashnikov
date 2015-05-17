@@ -89,7 +89,7 @@ class ClientsController extends Controller {
         $client->title = trim($request->get('title'));
         if ($request->hasFile('file_name'))
         {
-            $client->file_name = $this->saveImageToDisk();
+            $client->file_name = $this->saveImageToDisk($client->file_name);
         }
         $client->enabled = $request->get('enabled', FALSE);
         $client->save();

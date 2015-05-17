@@ -48,6 +48,22 @@
                 <a href="{{ action('Admin\AboutController@getIndex') }}"><i class="fa fa-building"></i> О Компании</a>
             </li>
 
+            <li class="treeview {{ Request::segment(2) == 'products' ? 'active' : '' }}">
+                <a href="#">
+                    <i class="fa fa-home"></i>
+                    <span>Продукты</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ Request::segment(3) == 'categories' ? 'active' : '' }}">
+                        <a href="{{ action('Admin\ProductCategoriesController@getIndex') }}"><i class="fa fa-circle-o"></i> Категории</a>
+                    </li>
+                    <li class="{{ Request::segment(3) == 'list' ? 'active' : '' }}">
+                        <a href="#"><i class="fa fa-circle-o"></i> Список продуктов</a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="treeview {{ Request::segment(2) == 'contacts' ? 'active' : '' }}">
                 <a href="#">
                     <i class="fa fa-phone"></i>
