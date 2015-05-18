@@ -7,7 +7,7 @@ class ProductProvidersTableSeeder extends Seeder {
 
     public function run()
     {
-        DB::table('product_categories')->delete();
+        DB::table('product_providers')->delete();
 
         ProductProvider::create(array(
                 'title' => 'Поставщик 1',

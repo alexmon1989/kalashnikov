@@ -41,6 +41,15 @@ class ProductCategoriesTableSeeder extends Seeder {
             )
         );
 
+        ProductCategory::create(array(
+                'title' => 'Пломбир',
+                'enabled' => TRUE,
+                'file_name' => 'no.jpg',
+                'description' => 'Пломбир',
+                'parent_id' => 1,
+            )
+        );
+
 
     }
 

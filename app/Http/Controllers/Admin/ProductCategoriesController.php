@@ -136,7 +136,10 @@ class ProductCategoriesController extends AdminController {
         }
 
         // Удаляем вместе с файлом
-        unlink( $this->thumbDest . $category->file_name );
+        if ($category->file_name != 'no.jpg')
+        {
+            unlink($this->thumbDest . $category->file_name);
+        }
         $category->delete();
 
         return redirect()->back()->with('success', 'Категория успешно удалена.');
