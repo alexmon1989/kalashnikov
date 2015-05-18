@@ -15,21 +15,21 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <img src="{{ asset('adminlte/img/admin-avatar.png') }}" class="user-image" alt="User Image"/>
-                      <span class="hidden-xs">admin</span>
+                      <span class="hidden-xs">{{ $auser->name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
                             <img src="{{ asset('adminlte/img/admin-avatar.png') }}" class="img-circle" alt="User Image" />
                             <p>
-                                admin - Администратор сайта
-                                <small>Зарегистрирован 06.05.2015</small>
+                                {{ $auser->name }} - Администратор сайта
+                                <small>Зарегистрирован {{ date('d.m.Y', strtotime($auser->created_at)) }}</small>
                             </p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Профиль</a>
+                                <a href="{{ action('Admin\Auth\AuthController@getEdit', ['id' => $auser->id]) }}" class="btn btn-default btn-flat">Профиль</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{{ action('Admin\Auth\AuthController@getLogout') }}" class="btn btn-default btn-flat">Выход</a>

@@ -10,13 +10,14 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 
-class ClientsController extends Controller {
+class ClientsController extends AdminController {
 
     // Расположение картинок
     protected $thumbDest;
 
     public function __construct()
     {
+        parent::__construct();
         $this->thumbDest = public_path('img/clients/');
     }
 
@@ -124,7 +125,7 @@ class ClientsController extends Controller {
      */
     private function findClient($id)
     {
-        // Ищем слайд
+        // Ищем клиента
         $client = Client::find($id);
         if (empty($client))
         {

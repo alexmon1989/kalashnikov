@@ -8,7 +8,7 @@ use App\Article;
 use Illuminate\Support\Facades\Validator;
 use Orchestra\Support\Facades\Memory;
 
-class ContactsMessagesController extends Controller {
+class ContactsMessagesController extends AdminController {
 
     // Правила и сообщения валидации
     protected $rules = array(

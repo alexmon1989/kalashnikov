@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('admin/profile/{category}', function(App\ProductCategory $category)
-{
-    dd($category);
-});
-
 Route::get('admin', ['middleware' => 'auth', 'Admin\DashboardController@getIndex']);
 
 // Роут контроллера авторизации, middleware указан в его конструкторе
@@ -25,20 +20,22 @@ Route::controller('admin/auth', 'Admin\Auth\AuthController');
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function()
 {
     Route::controllers([
-        'dashboard'             => 'DashboardController',
-        'news'                  => 'NewsController',
-        'main/article'          => 'MainArticleController',
-        'main/info-blocks'      => 'InfoBlocksController',
-        'about'                 => 'AboutController',
-        'contacts/info'         => 'ContactsInfoController',
-        'contacts/messages'     => 'ContactsMessagesController',
-        'gallery/categories'    => 'GalleryCategoriesController',
-        'gallery/images'        => 'GalleryImagesController',
-        'slider'                => 'SliderController',
-        'clients'               => 'ClientsController',
-        'votes'                 => 'VotesController',
-        'settings'              => 'SettingsController',
-        'products/categories'              => 'ProductCategoriesController',
+        'dashboard'                 => 'DashboardController',
+        'news'                      => 'NewsController',
+        'main/article'              => 'MainArticleController',
+        'main/info-blocks'          => 'InfoBlocksController',
+        'about'                     => 'AboutController',
+        'contacts/info'             => 'ContactsInfoController',
+        'contacts/messages'         => 'ContactsMessagesController',
+        'gallery/categories'        => 'GalleryCategoriesController',
+        'gallery/images'            => 'GalleryImagesController',
+        'slider'                    => 'SliderController',
+        'clients'                   => 'ClientsController',
+        'votes'                     => 'VotesController',
+        'settings'                  => 'SettingsController',
+        'products/categories'       => 'ProductCategoriesController',
+        'products/providers'        => 'ProductProvidersController',
+        'products/manufacturers'    => 'ProductManufacturersController',
     ]);
 });
 

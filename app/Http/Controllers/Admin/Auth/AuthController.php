@@ -1,12 +1,12 @@
 <?php namespace App\Http\Controllers\Admin\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\AdminController;
 use App\Services\AuthenticatesAndRegistersAdmins;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Validation\Validator;
 
-class AuthController extends Controller {
+class AuthController extends AdminController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -31,6 +31,8 @@ class AuthController extends Controller {
 	 */
 	public function __construct(Guard $auth, Registrar $registrar)
 	{
+        parent::__construct();
+
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 

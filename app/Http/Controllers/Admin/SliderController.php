@@ -9,13 +9,14 @@ use App\Http\Requests\StoreSliderRequest;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 
-class SliderController extends Controller {
+class SliderController extends AdminController {
 
     // Расположение картинок
     protected $thumbDest;
 
     public function __construct()
     {
+        parent::__construct();
         $this->thumbDest = public_path('img/sliders/');
     }
 

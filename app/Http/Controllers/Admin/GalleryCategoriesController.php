@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreGalleryCategoriesRequest;
 use Illuminate\Support\Facades\Input;
 
-class GalleryCategoriesController extends Controller {
+class GalleryCategoriesController extends AdminController {
 
 	/**
 	 * Отображение списка категорий.

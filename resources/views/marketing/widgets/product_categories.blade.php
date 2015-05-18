@@ -10,50 +10,19 @@
     </div>
 
     <div class="owl-product-categories">
+        @foreach($categories as $category)
         <div class="item">
             <a href="#">
                 <em class="overflow-hidden">
-                    <img class="img-responsive" src="{{ asset('img/product_categories/1.jpg') }}" alt="">
+                    <img class="img-responsive" src="{{ asset('img/product_categories/'.$category->file_name) }}" alt="{{ $category->title }}">
                 </em>
                 <span>
-                    <strong>Макароны</strong>
-                    <i>Макароны и мучная продукция.</i>
+                    <strong>{{ $category->title }}</strong>
+                    <i>{!! $category->description !!}</i>
                 </span>
             </a>
         </div>
-        <div class="item">
-            <a href="#">
-                <em class="overflow-hidden">
-                    <img class="img-responsive" src="{{ asset('img/product_categories/2.jpg') }}" alt="">
-                </em>
-                <span>
-                    <strong>Чай</strong>
-                    <i>Чай листовой и пакетированный.</i>
-                </span>
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-                <em class="overflow-hidden">
-                    <img class="img-responsive" src="{{ asset('img/product_categories/3.jpg') }}" alt="">
-                </em>
-                <span>
-                    <strong>Консервы</strong>
-                    <i>Мясные и рыбные консервы. </i>
-                </span>
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-                <em class="overflow-hidden">
-                    <img class="img-responsive" src="{{ asset('img/product_categories/4.jpg') }}" alt="">
-                </em>
-                <span>
-                    <strong>Детское питание</strong>
-                    <i>Питание для младенцев и детей. </i>
-                </span>
-            </a>
-        </div>
+        @endforeach
     </div>
 </div>
 <!-- End Продукция -->

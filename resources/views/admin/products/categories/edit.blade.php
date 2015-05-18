@@ -21,15 +21,16 @@
         </div>
     </div>
     <div class="box-body">
+        <div class="row">
+          <div class="col-xs-5 col-md-5">
+              <img src="{{ asset('img/product_categories/'.$category->file_name) }}" alt="" />
+          </div>
+        </div>
+
         @include('admin.products.categories._form')
     </div><!-- /.box-body -->
     <div class="box-footer">
         <a href="{{ action('Admin\ProductCategoriesController@getIndex') }}">Назад ко всем категориям</a>
     </div><!-- /.box-footer-->
 </div><!-- /.box -->
-@stop
-
-@section('script')
-<!-- CKEDITOR -->
-<script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
 @stop

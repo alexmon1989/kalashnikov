@@ -9,13 +9,14 @@ use App\Http\Requests\StoreProductCategoriesRequest;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 
-class ProductCategoriesController extends Controller {
+class ProductCategoriesController extends AdminController {
 
     // Расположение картинок
     protected $thumbDest;
 
     public function __construct()
     {
+        parent::__construct();
         $this->thumbDest = public_path('img/product_categories/');
     }
 
@@ -175,7 +176,7 @@ class ProductCategoriesController extends Controller {
 
         // Делаем преобразования
         $img = Image::make($upload_file)
-            ->resize(200, 150);
+            ->resize(487, 308);
 
         // Сохраняем файл
         $img->save($this->thumbDest.$name.'.'.$upload_file->getClientOriginalExtension());

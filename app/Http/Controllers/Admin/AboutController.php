@@ -9,7 +9,7 @@ use App\Article;
 use App\Http\Requests\StoreArticlesRequest;
 use Illuminate\Support\Facades\Input;
 
-class AboutController extends Controller {
+class AboutController extends AdminController {
 
     protected $articleType = 'about';
 

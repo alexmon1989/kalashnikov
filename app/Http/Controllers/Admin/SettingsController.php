@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Orchestra\Support\Facades\Memory;
 use Illuminate\Support\Facades\Input;
 
-class SettingsController extends Controller {
+class SettingsController extends AdminController {
 
 	/**
 	 * Отображаем список настроек.

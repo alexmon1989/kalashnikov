@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\StoreArticlesRequest;
 
-class InfoBlocksController extends Controller {
+class InfoBlocksController extends AdminController {
 
 	/**
 	 * Отображение страницы редактирования инфоблоков

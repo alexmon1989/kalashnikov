@@ -6,6 +6,7 @@ use App\GalleryImage;
 use App\Slider;
 use App\Client;
 use App\Vote;
+use App\ProductCategory;
 
 // Виджет слайдера
 Widget::register('slider', function()
@@ -31,9 +32,12 @@ Widget::register('news', function()
 // Виджет категорий продуктов на главной странице
 Widget::register('product_categories', function()
 {
-    // TODO: сделать выборку категорий, сейчас отображается просто статический шаблон
+    $data['categories'] = ProductCategory::orderBy('title', 'ASC')
+                                        ->where('enabled', '=', TRUE)
+                                        ->whereNull('parent_id')
+                                        ->get();
 
-    return view('marketing.widgets.product_categories');
+    return view('marketing.widgets.product_categories', $data);
 });
 
 // Виджет клиентов

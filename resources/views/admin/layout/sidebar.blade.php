@@ -8,7 +8,7 @@
                 <img src="{{ asset('adminlte/img/admin-avatar.png') }}" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-                <p>admin</p>
+                <p>{{ $auser->name }}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -58,6 +58,12 @@
                     <li class="{{ Request::segment(3) == 'categories' ? 'active' : '' }}">
                         <a href="{{ action('Admin\ProductCategoriesController@getIndex') }}"><i class="fa fa-circle-o"></i> Категории</a>
                     </li>
+                    <li class="{{ Request::segment(3) == 'providers' ? 'active' : '' }}">
+                        <a href="{{ action('Admin\ProductProvidersController@getIndex') }}"><i class="fa fa-circle-o"></i> Поставщики</a>
+                    </li>
+                    <li class="{{ Request::segment(3) == 'manufacturers' ? 'active' : '' }}">
+                        <a href="{{ action('Admin\ProductManufacturersController@getIndex') }}"><i class="fa fa-circle-o"></i> Производители</a>
+                    </li>
                     <li class="{{ Request::segment(3) == 'list' ? 'active' : '' }}">
                         <a href="#"><i class="fa fa-circle-o"></i> Список продуктов</a>
                     </li>
@@ -94,6 +100,10 @@
 
             <li class="{{ Request::segment(2) == 'votes' ? 'active' : '' }}">
                 <a href="{{ action('Admin\VotesController@getIndex') }}"><i class="fa fa-question "></i> Опросы</a>
+            </li>
+
+            <li class="{{ Request::segment(2) == 'auth' ? 'active' : '' }}">
+                <a href="{{ action('Admin\Auth\AuthController@getList') }}"><i class="fa fa-users "></i> Пользователи</a>
             </li>
 
             <li class="{{ Request::segment(2) == 'settings' ? 'active' : '' }}">

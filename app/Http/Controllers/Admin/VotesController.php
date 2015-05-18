@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreVotesRequest;
 use Intervention\Image\Facades\Image;
 
-class VotesController extends Controller {
+class VotesController extends AdminController {
 
 	/**
 	 * Отображение списка опросов.

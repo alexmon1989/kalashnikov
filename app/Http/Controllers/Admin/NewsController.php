@@ -11,14 +11,16 @@ use App\Http\Requests\StoreNewsRequest;
 use Intervention\Image\Facades\Image;
 use Orchestra\Support\Facades\Memory;
 
-class NewsController extends Controller {
+class NewsController extends AdminController {
 
     // Расположение картинок-превью новостей
     protected $thumbDest;
 
     public function __construct()
     {
-       $this->thumbDest = public_path('img/thumb/');
+        parent::__construct();
+
+        $this->thumbDest = public_path('img/thumb/');
     }
 
 	/**

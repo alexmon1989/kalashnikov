@@ -12,28 +12,36 @@ class ProductCategoriesTableSeeder extends Seeder {
         ProductCategory::create(array(
                 'title' => 'Мороженое',
                 'enabled' => TRUE,
-                'file_name' => '1.jpg',
+                'file_name' => 'o0cJXohgMd.jpg',
                 'description' => 'Мороженое',
             )
         );
 
         ProductCategory::create(array(
-                'title' => 'Пломбир',
+                'title' => 'Макароны',
                 'enabled' => TRUE,
-                'file_name' => '2.jpg',
-                'description' => 'Пломбир',
-                'parent_id' => 1,
+                'file_name' => 'gNcXpdyEFp.jpg',
+                'description' => 'Макароны',
             )
         );
 
         ProductCategory::create(array(
-                'title' => 'Сливочное',
+                'title' => 'Чай',
                 'enabled' => TRUE,
-                'file_name' => '3.jpg',
-                'description' => 'Сливочное',
-                'parent_id' => 1,
+                'file_name' => 'b2fbr4B4bI.jpg',
+                'description' => 'Чай',
             )
         );
+
+        ProductCategory::create(array(
+                'title' => 'Консервы',
+                'enabled' => TRUE,
+                'file_name' => 'nCTVgpUSJI.jpg',
+                'description' => 'Консервы',
+            )
+        );
+
+
     }
 
 }

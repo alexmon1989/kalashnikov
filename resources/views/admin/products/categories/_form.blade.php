@@ -22,11 +22,11 @@
         <div class="form-group">
             <label for="file_name">Изображение</label>
             <input type="file" id="file_name" name="file_name">
-            <p class="help-block">Форматы: <b>jpg, png, gif</b>. Размер: <b>973px * 615px</b>. Программа приведёт изображение к этому разрешению автоматически без сохранения пропорций сторон.</p>
+            <p class="help-block">Форматы: <b>jpg, png, gif</b>. Размер: <b>487px * 308px</b>. Программа приведёт изображение к этому разрешению автоматически без сохранения пропорций сторон.</p>
         </div>
         <div class="form-group">
             <label for="description">Описание</label>
-            <textarea id="description" name="description" class="form-control ckeditor">{{ old('description', isset($category) ? $category->description : '') }}</textarea>
+            <textarea id="description" name="description" class="form-control">{{ old('description', isset($category) ? $category->description : '') }}</textarea>
         </div>
     </div><!-- /.box-body -->
 

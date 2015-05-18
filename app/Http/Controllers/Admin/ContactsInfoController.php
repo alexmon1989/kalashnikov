@@ -10,7 +10,7 @@ use App\Http\Requests\StoreCoordsRequest;
 use Illuminate\Support\Facades\Input;
 use Orchestra\Support\Facades\Memory;
 
-class ContactsInfoController extends Controller {
+class ContactsInfoController extends AdminController {
 
 	/**
 	 * Отображение страницы редактирования контактной информации.

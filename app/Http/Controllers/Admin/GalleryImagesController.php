@@ -10,13 +10,14 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests\StoreGalleryImagesRequest;
 use Intervention\Image\Facades\Image;
 
-class GalleryImagesController extends Controller {
+class GalleryImagesController extends AdminController {
 
     // Расположение картинок
     protected $thumbDest;
 
     public function __construct()
     {
+        parent::__construct();
         $this->thumbDest = public_path('img/gallery/');
     }
 
