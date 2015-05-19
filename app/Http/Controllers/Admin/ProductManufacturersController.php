@@ -88,7 +88,13 @@ class ProductManufacturersController extends AdminController {
     {
         $manufacturer = $this->findManufacturer($id);
 
-        $manufacturer->delete();
+        // Пробуем удалять
+        try {
+            $manufacturer->delete();
+        }
+        catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withErrors('Невозможно удалить производителя! Сначала нужно удалить товары, что ему принадлежат.');
+        }
 
         return redirect()->back()->with('success', 'Производитель успешно удалён.');
     }

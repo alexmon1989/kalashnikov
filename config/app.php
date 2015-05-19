@@ -152,6 +152,7 @@ return [
         'Intervention\Image\ImageServiceProvider',
         'Orchestra\Memory\MemoryServiceProvider',
         'Orchestra\Memory\CommandServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
 	],
 
 	/*
@@ -204,7 +205,8 @@ return [
         'Image'     => 'Intervention\Image\Facades\Image',
         'Memory'    => 'Orchestra\Support\Facades\Memory',
         'Form'      => 'Illuminate\Html\FormFacade',
-        'HTML'      => 'Illuminate\Html\HtmlFacade'
+        'HTML'      => 'Illuminate\Html\HtmlFacade',
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
 	],
 

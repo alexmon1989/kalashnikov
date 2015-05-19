@@ -65,7 +65,7 @@
                         <a href="{{ action('Admin\ProductManufacturersController@getIndex') }}"><i class="fa fa-circle-o"></i> Производители</a>
                     </li>
                     <li class="{{ Request::segment(3) == 'list' ? 'active' : '' }}">
-                        <a href="#"><i class="fa fa-circle-o"></i> Список продуктов</a>
+                        <a href="{{ action('Admin\ProductsController@getIndex') }}"><i class="fa fa-circle-o"></i> Список продуктов</a>
                     </li>
                 </ul>
             </li>

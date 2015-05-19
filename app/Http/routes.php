@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         'clients'                   => 'ClientsController',
         'votes'                     => 'VotesController',
         'settings'                  => 'SettingsController',
+        'products/list'             => 'ProductsController',
         'products/categories'       => 'ProductCategoriesController',
         'products/providers'        => 'ProductProvidersController',
         'products/manufacturers'    => 'ProductManufacturersController',

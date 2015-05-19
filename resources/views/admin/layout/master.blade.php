@@ -78,7 +78,8 @@
     <!-- FastClick -->
     <script src="{{ asset('adminlte/plugins/fastclick/fastclick.min.js') }}"></script>
     <!-- Datatables -->
-    <script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.js') }}"></script>
+    <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
     <script src="{{ asset('adminlte/plugins/datatables/dataTables.bootstrap.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('adminlte/js/app.min.js') }}" type="text/javascript"></script>

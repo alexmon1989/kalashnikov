@@ -87,7 +87,13 @@ class ProductProvidersController extends AdminController {
     {
         $provider = $this->findProvider($id);
 
-        $provider->delete();
+        // Пробуем удалять
+        try {
+            $provider->delete();
+        }
+        catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withErrors('Невозможно удалить поставщика! Сначала нужно удалить товары, что ему принадлежат.');
+        }
 
         return redirect()->back()->with('success', 'Поставщик успешно удалён.');
     }

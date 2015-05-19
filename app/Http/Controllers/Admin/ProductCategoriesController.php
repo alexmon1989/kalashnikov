@@ -27,7 +27,7 @@ class ProductCategoriesController extends AdminController {
 	 */
 	public function getIndex()
 	{
-        $data['categories'] = ProductCategory::all();
+        $data['categories'] = ProductCategory::with('parentCategory')->get();
 
 		return view('admin.products.categories.index', $data);
 	}
@@ -128,19 +128,20 @@ class ProductCategoriesController extends AdminController {
         // Ищем категорию
         $category = $this->findCategory($id);
 
-        // Проверяем, есть ли подкатегории
-        if (count($category->childCategories) > 0)
-        {
-            return redirect()->back()
-                            ->withErrors('Категория содержит подкатегории. Удалите сначала их.');
-        }
-
         // Удаляем вместе с файлом
-        if ($category->file_name != 'no.jpg')
-        {
-            unlink($this->thumbDest . $category->file_name);
+        try {
+            $file_name = $category->file_name;
+
+            $category->delete();
+
+            if ($file_name != 'no.jpg')
+            {
+                unlink($this->thumbDest . $category->file_name);
+            }
         }
-        $category->delete();
+        catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withErrors('Невозможно удалить категорию! Сначала нужно удалить товары и/или категории, что ей принадлежат.');
+        }
 
         return redirect()->back()->with('success', 'Категория успешно удалена.');
     }

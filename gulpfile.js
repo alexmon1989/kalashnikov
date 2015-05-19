@@ -51,7 +51,6 @@ elixir(function(mix) {
         .copy('resources/assets/bower/adminlte/plugins/fastclick', 'public/adminlte/plugins/fastclick')
         .copy('resources/assets/bower/adminlte/plugins/datatables', 'public/adminlte/plugins/datatables')
         .copy('resources/assets/bower/adminlte/plugins/iCheck', 'public/adminlte/plugins/iCheck')
-        .copy('resources/assets/bower/adminlte/dist/js/custom.js', 'public/adminlte/js/custom.js')
 
         // CKEDITOR
         .copy('resources/assets/bower/ckeditor/config.js', 'public/plugins/ckeditor/config.js')

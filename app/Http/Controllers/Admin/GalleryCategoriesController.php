@@ -17,7 +17,7 @@ class GalleryCategoriesController extends AdminController {
 	 */
 	public function getIndex()
 	{
-        $data['categories'] = GalleryCategory::all();
+        $data['categories'] = GalleryCategory::with('images')->get();
 
 		return view('admin.gallery.categories.index', $data);
 	}
