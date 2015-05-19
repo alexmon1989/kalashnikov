@@ -4,12 +4,24 @@ use App\Http\Requests;
 
 use App\Product;
 use App\ProductCategory;
+use App\ProductImage;
 use App\ProductManufacturer;
 use App\ProductProvider;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductsRequest;
+use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
 
 class ProductsController extends AdminController {
+
+    // Расположение картинок
+    protected $thumbDest;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->thumbDest = public_path('img/products/');
+    }
 
 	/**
 	 * Отображает список продуктов.
@@ -100,7 +112,7 @@ class ProductsController extends AdminController {
 
     public function getDelete($id)
     {
-
+        // TODO
     }
 
     /**
@@ -127,7 +139,7 @@ class ProductsController extends AdminController {
     private function findProduct($id)
     {
         // Ищем продукт
-        $product = Product::find($id);
+        $product = Product::with(['category', 'manufacturer', 'provider', 'images.product'])->find($id);
         if (empty($product))
         {
             abort(404);
@@ -136,4 +148,78 @@ class ProductsController extends AdminController {
         return $product;
     }
 
+    /**
+     * Удаление изображения продукта
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function getDeleteImage($id)
+    {
+        $image = ProductImage::with('product.images')->find($id);
+        if (empty($image))
+        {
+            abort(404);
+        }
+
+        // Удаляем картинку с ЖД
+        unlink($this->thumbDest.$image->product->id.'/'.$image->file_name);
+
+        // Смотрим есть ли еще изображения у продукта. Нет - удаляем весь каталог
+        if (count($image->product->images) == 1)
+        {
+            rmdir($this->thumbDest.$image->product->id);
+        }
+
+        $image->delete();
+
+        return redirect()->back()->with('success', 'Изображение успешно удалено.');
+    }
+
+    /**
+     * Действие обработки запроса на добавление изображения
+     * @param $id id продукта, которому добавляем изображение
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postCreateImage(Request $request, $id)
+    {
+        $this->validate($request, [
+            'file_name' => 'required|image',
+        ], [
+            'file_name.required' => 'Необходимо выбрать изображение.',
+            'file_name.image' => 'Выбранный файл должен быть изображением.'
+        ]);
+
+        // Создаём изображение и сохраняем
+        $image = new ProductImage;
+        $image->product_id = $id;
+        $image->file_name = $this->saveImageToDisk($id);
+        $image->save();
+
+        return redirect()->back()->with('success', 'Изображение успешно добавлено.');
+    }
+
+    /**
+     * Метод для добавления изображения в соотв. папку
+     *
+     * @param $id id продукта, которому добавляем изображение
+     * @return string Название загруженного файла с его расширением
+     */
+    private function saveImageToDisk($id)
+    {
+        // Название изображения
+        $name = str_random(10);
+
+        // Загруженный файл
+        $upload_file = Input::file('file_name');
+
+        Image::make($upload_file)
+            ->resize(550, 550)
+            ->save($this->thumbDest.$id.'/'.$name.'.'.$upload_file->getClientOriginalExtension());
+
+
+        return $name.'.'.$upload_file->getClientOriginalExtension();
+    }
 }

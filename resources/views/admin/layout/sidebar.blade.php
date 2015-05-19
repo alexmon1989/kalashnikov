@@ -50,7 +50,7 @@
 
             <li class="treeview {{ Request::segment(2) == 'products' ? 'active' : '' }}">
                 <a href="#">
-                    <i class="fa fa-home"></i>
+                    <i class="fa fa-shopping-cart"></i>
                     <span>Продукты</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>

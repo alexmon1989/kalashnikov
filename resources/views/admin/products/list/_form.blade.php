@@ -60,8 +60,6 @@
                 <input type="checkbox" name="enabled" value="1" {{ old('enabled', isset($product) ? $product->enabled : 0) == 1 ? 'checked=""' : ''  }}> Включено
             </label>
         </div>
-
-
     </div><!-- /.box-body -->
 
     <div class="box-footer">

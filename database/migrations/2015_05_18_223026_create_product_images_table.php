@@ -23,7 +23,7 @@ class CreateProductImagesTable extends Migration {
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
-                ->onDelete('no action')
+                ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
     }

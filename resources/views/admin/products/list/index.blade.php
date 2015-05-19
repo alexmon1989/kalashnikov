@@ -24,45 +24,45 @@
             <a class="btn btn-primary" href="{{ action('Admin\ProductsController@getCreate') }}"><i class="fa fa-plus"></i> Создать</a>
         </p>
         <table id="data" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Название</th>
-                        <th>Категория</th>
-                        <th>Производитель</th>
-                        <th>Поставщик</th>
-                        <th>Упаковка</th>
-                        <th>Вес</th>
-                        <th>Включено</th>
-                        <th>Создано</th>
-                        <th>Последнее редактирование</th>
-                        <th>Действия</th>
-                    </tr>
-                </thead>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Категория</th>
+                    <th>Производитель</th>
+                    <th>Поставщик</th>
+                    <th>Упаковка</th>
+                    <th>Вес</th>
+                    <th>Включено</th>
+                    <th>Создано</th>
+                    <th>Последнее редактирование</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
 
-                <tbody>
-                    @foreach($products as $item)
-                    <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->title }}</td>
-                        <td>{{ $item->category->title }}</td>
-                        <td>{{ $item->manufacturer->title }}</td>
-                        <td>{{ $item->provider->title }}</td>
-                        <td>{{ $item->packing }}</td>
-                        <td>{{ $item->weight }}</td>
-                        <td>{!! $item->enabled == TRUE ? '<strong>Да</strong>' : 'Нет' !!}</td>
-                        <td>{{ date('d.m.Y H:i:s', strtotime($item->created_at)) }}</td>
-                        <td>{{ date('d.m.Y H:i:s', strtotime($item->updated_at)) }}</td>
-                        <td>
-                            <div class="btn-group">
-                                <a class="btn btn-primary btn-sm" href="{{ action('Admin\ProductsController@getEdit', array('id' => $item->id)) }}" title="Редактировать"><i class="fa fa-edit"></i></a>
-                                <a class="btn btn-danger btn-sm item-delete" href="{{ action('Admin\ProductsController@getDelete', array('id' => $item->id)) }}" title="Удалить"><i class="fa fa-remove"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <tbody>
+                @foreach($products as $item)
+                <tr>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->category->title }}</td>
+                    <td>{{ $item->manufacturer->title }}</td>
+                    <td>{{ $item->provider->title }}</td>
+                    <td>{{ $item->packing }}</td>
+                    <td>{{ $item->weight }}</td>
+                    <td>{!! $item->enabled == TRUE ? '<strong>Да</strong>' : 'Нет' !!}</td>
+                    <td>{{ date('d.m.Y H:i:s', strtotime($item->created_at)) }}</td>
+                    <td>{{ date('d.m.Y H:i:s', strtotime($item->updated_at)) }}</td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-primary btn-sm" href="{{ action('Admin\ProductsController@getEdit', array('id' => $item->id)) }}" title="Редактировать"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-danger btn-sm item-delete" href="{{ action('Admin\ProductsController@getDelete', array('id' => $item->id)) }}" title="Удалить"><i class="fa fa-remove"></i></a>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div><!-- /.box-body -->
     <div class="box-footer">
     </div><!-- /.box-footer-->

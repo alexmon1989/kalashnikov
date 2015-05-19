@@ -21,7 +21,55 @@
         </div>
     </div>
     <div class="box-body">
-        @include('admin.products.list._form')
+        <div class="box-body">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#product-data">Данные</a></li>
+                <li><a data-toggle="tab" href="#images">Изображения</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="product-data" class="tab-pane fade in active">
+                    <h3>Данные</h3>
+                    @include('admin.products.list._form')
+                </div>
+
+                <div id="images" class="tab-pane fade">
+                    <h3>Изображения</h3>
+
+                    <form role="form" method="post" action="{{ action('Admin\ProductsController@postCreateImage', ['id' => $product->id]) }}" enctype="multipart/form-data">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <div class="form-group">
+                            <label for="file_name">Выбор файла</label>
+                            <input type="file" id="file_name" name="file_name">
+                            <p class="help-block">Выбирайте файл со своего компьютера и нажимайте кнопку "Сохранить изображение". Изображение будет трансформировано к размеру 550px * 550px.</p>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i>&nbsp;&nbsp;Сохранить изображение</button>
+                        </div>
+                    </form>
+
+                    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th width="5%">ID</th>
+                                <th>Изображение</th>
+                                <th width="5%">Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($product->images as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td><img width="200" src="{{ asset('img/products/'.$item->product->id.'/'.$item->file_name) }}" alt=""/></td>
+                                <td><a class="btn btn-danger btn-sm item-delete" href="{{ action('Admin\ProductsController@getDeleteImage', array('id' => $item->id)) }}" title="Удалить"><i class="fa fa-remove"></i></a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
     </div><!-- /.box-body -->
     <div class="box-footer">
         <a href="{{ action('Admin\ProductsController@getIndex') }}">Назад ко всем продуктам</a>
