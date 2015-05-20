@@ -10,5 +10,8 @@
 .header .logo {
   width: auto;
 }
+.panel-title a:hover {
+  color: #fff;
+}
 
 /*# sourceMappingURL=custom.css.map */

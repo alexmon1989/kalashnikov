@@ -22,7 +22,7 @@
                 <li class="{{ Request::segment(1) == 'main' || Request::segment(1) == '' ? 'active' : '' }}"><a href="{{ action('Marketing\MainController@index') }}">Главная</a></li>
                 <li class="{{ Request::segment(1) == 'about' ? 'active' : '' }}"><a href="{{ action('Marketing\AboutController@getIndex') }}">О компании</a></li>
                 <li class="{{ Request::segment(1) == 'news' ? 'active' : '' }}"><a href="{{ action('Marketing\NewsController@getIndex') }}">Новости</a></li>
-                <li><a href="index.html">Продукция</a></li>
+                <li class="{{ Request::segment(1) == 'products' ? 'active' : '' }}"><a href="{{ action('Marketing\ProductsController@getIndex') }}">Продукция</a></li>
                 <li class="{{ Request::segment(1) == 'gallery' ? 'active' : '' }}"><a href="{{ action('Marketing\GalleryController@getIndex') }}">Галерея</a></li>
                 <li class="{{ Request::segment(1) == 'contacts' ? 'active' : '' }}"><a href="{{ action('Marketing\ContactsController@getIndex') }}">Контакты</a></li>
 

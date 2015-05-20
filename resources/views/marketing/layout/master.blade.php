@@ -43,6 +43,7 @@
 
     @yield('styles')
 
+
     <!-- CSS Customization -->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>

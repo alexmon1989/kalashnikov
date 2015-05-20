@@ -48,11 +48,10 @@ Route::post('main/price-request', 'Marketing\MainController@priceRequest');
 Route::group(['namespace' => 'Marketing'], function()
 {
     Route::controllers([
-        'news'      => 'NewsController',
-        'about'     => 'AboutController',
-        'contacts'  => 'ContactsController',
-        'gallery'   => 'GalleryController',
+        'news'          => 'NewsController',
+        'about'         => 'AboutController',
+        'contacts'      => 'ContactsController',
+        'gallery'       => 'GalleryController',
+        'products'      => 'ProductsController',
     ]);
 });
-
-

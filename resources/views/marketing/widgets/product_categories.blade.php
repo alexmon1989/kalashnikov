@@ -12,7 +12,7 @@
     <div class="owl-product-categories">
         @foreach($categories as $category)
         <div class="item">
-            <a href="#">
+            <a href="{{ action('Marketing\ProductsController@getCategory', ['id' => $category->id]) }}">
                 <em class="overflow-hidden">
                     <img class="img-responsive" src="{{ asset('img/product_categories/'.$category->file_name) }}" alt="{{ $category->title }}">
                 </em>

@@ -9,6 +9,7 @@ use App\ProductManufacturer;
 use App\ProductProvider;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductsRequest;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 
@@ -110,9 +111,23 @@ class ProductsController extends AdminController {
             ->with('success', 'Продукт успешно отредактирован.');
     }
 
+    /**
+     * Удаление продукта
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getDelete($id)
     {
-        // TODO
+        // Ищем и удаляем продукт и каталог с изображениями
+        $product = $this->findProduct($id);
+        $product->delete();
+
+        $dir = $this->thumbDest.$id.'/';
+        File::deleteDirectory($dir);
+
+        return redirect()->back()
+            ->with('success', 'Продукт успешно удалён.');
     }
 
     /**
@@ -163,12 +178,13 @@ class ProductsController extends AdminController {
         }
 
         // Удаляем картинку с ЖД
-        unlink($this->thumbDest.$image->product->id.'/'.$image->file_name);
+        $dir = $this->thumbDest.$image->product->id.'/';
+        File::delete($dir.$image->file_name);
 
         // Смотрим есть ли еще изображения у продукта. Нет - удаляем весь каталог
         if (count($image->product->images) == 1)
         {
-            rmdir($this->thumbDest.$image->product->id);
+            File::deleteDirectory($dir);
         }
 
         $image->delete();
@@ -215,9 +231,16 @@ class ProductsController extends AdminController {
         // Загруженный файл
         $upload_file = Input::file('file_name');
 
+        // Если каталога не существует, то создаём
+        $dir = $this->thumbDest.$id.'/';
+        if (!is_dir($dir))
+        {
+            mkdir($dir);
+        }
+
         Image::make($upload_file)
             ->resize(550, 550)
-            ->save($this->thumbDest.$id.'/'.$name.'.'.$upload_file->getClientOriginalExtension());
+            ->save($dir.$name.'.'.$upload_file->getClientOriginalExtension());
 
 
         return $name.'.'.$upload_file->getClientOriginalExtension();
