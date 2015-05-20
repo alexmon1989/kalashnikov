@@ -9,6 +9,7 @@ use App\ProductManufacturer;
 use App\ProductProvider;
 use Debugbar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ProductsController extends Controller {
 
@@ -19,7 +20,8 @@ class ProductsController extends Controller {
 	 */
 	public function getIndex()
 	{
-        $data['categories'] = ProductCategory::whereNull('parent_id')
+        $data['categories'] = ProductCategory::with('childCategories')
+            ->whereNull('parent_id')
             ->where('enabled', '=', TRUE)
             ->orderBy('title', 'ASC')
             ->get();
@@ -69,6 +71,18 @@ class ProductsController extends Controller {
      */
     private function setCategoryDataToView(ProductCategory $category)
     {
+        // Данные для фильтров
+        $data['manufacturers'] = ProductManufacturer::orderBy('title')->whereHas('products', function($q) use ($category)
+        {
+            $q->where('category_id', '=', $category->id);
+
+        })->get();
+        $data['providers'] = ProductProvider::orderBy('title')->whereHas('products', function($q) use ($category)
+        {
+            $q->where('category_id', '=', $category->id);
+
+        })->get();
+
         // Все категории
         $data['categories'] = ProductCategory::with('childCategories')
             ->whereNull('parent_id')
@@ -76,25 +90,32 @@ class ProductsController extends Controller {
             ->orderBy('title')
             ->get();
 
-        // Продукты категории
+        // Продукты категории с постраничным выводом
         $data['products'] = $category->products()
+            ->with('images')
             ->where('enabled', '=', TRUE)
-            ->orderBy('title', 'ASC')
-            ->get();
+            ->orderBy('title', 'ASC');
 
-        // Id продуктов для последующего
-        $productManufacturersIds = [];
-        $productProvidersIds = [];
-        foreach ($data['products'] as $product)
+        // Данные, которые пользователь выбрал в фильтрах для ссылок пагинации,
+        // а также доп фильтрация на их основе в продуктах
+        $data['pagination_params'] = [];
+        if (trim(Input::get('title', '')) != '')
         {
-            $productManufacturersIds[] = $product->manufacturer_id;
-            $productProvidersIds[] = $product->provider_id;
+            $data['pagination_params']['title'] = Input::get('title');
+            $data['products'] = $data['products']->where('title', 'LIKE', Input::get('title').'%');
+        }
+        if (Input::get('manufacturer_id'))
+        {
+            $data['pagination_params']['manufacturer_id'] = Input::get('manufacturer_id');
+            $data['products'] = $data['products']->whereIn('manufacturer_id', Input::get('manufacturer_id'));
+        }
+        if (Input::get('provider_id'))
+        {
+            $data['pagination_params']['provider_id'] = Input::get('provider_id');
+            $data['products'] = $data['products']->whereIn('provider_id', Input::get('provider_id'));
         }
 
-        // Данные для фильтров
-        $data['manufacturers'] = ProductManufacturer::whereIn('id', $productManufacturersIds)->orderBy('title')->get();
-        $data['providers'] = ProductProvider::whereIn('id', $productProvidersIds)->orderBy('title')->get();
-
+        $data['products'] = $data['products']->paginate(12);
         view()->share($data);
     }
 

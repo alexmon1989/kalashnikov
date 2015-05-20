@@ -8,7 +8,7 @@ class ProductCategory extends Model {
 
     public function childCategories()
     {
-        return $this->hasMany('App\ProductCategory', 'parent_id');
+        return $this->hasMany('App\ProductCategory', 'parent_id')->orderBy('title');
     }
 
     public function parentCategory()

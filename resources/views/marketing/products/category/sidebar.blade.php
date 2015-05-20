@@ -37,7 +37,7 @@
             <div class="panel-collapse collapse in" id="title">
                 <div class="panel-body">
                     <div class="form-group">
-                        <input type="text" placeholder="Название" id="title" name="title" class="form-control">
+                        <input type="text" placeholder="Название" id="title" name="title" class="form-control" value="{{ Input::get('title') }}">
                     </div>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     @foreach($manufacturers as $item)
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="manufacturer_id[]" value="{{ $item->id }}"> {{ $item->title }}
+                            <input type="checkbox" {{ in_array($item->id, Input::get('manufacturer_id', array())) ? 'checked=""' : '' }} name="manufacturer_id[]" value="{{ $item->id }}"> {{ $item->title }}
                         </label>
                     </div>
                     @endforeach
@@ -83,7 +83,7 @@
                     @foreach($providers as $item)
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="provider_id[]" value="{{ $item->id }}"> {{ $item->title }}
+                            <input type="checkbox" {{ in_array($item->id, Input::get('provider_id', array())) ? 'checked=""' : '' }} name="provider_id[]" value="{{ $item->id }}"> {{ $item->title }}
                         </label>
                     </div>
                     @endforeach
@@ -91,8 +91,6 @@
             </div>
         </div>
     </div>
-
-    <input type="hidden" name="page" value="{{ Input::get('page') }}" />
 
     <button class="btn-u btn-u-blue" type="submit">Применить</button>
 </form>
