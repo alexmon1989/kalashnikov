@@ -1,1 +1,21 @@
-.purchase span{margin-top:7px}.owl-news .item a{text-align:left}.owl-news .item a strong{min-height:42px}.header .logo{width:auto}.panel-title a:hover{color:#fff}
+.purchase span {
+  margin-top: 7px;
+}
+.owl-news .item a {
+  text-align: left;
+}
+.owl-news .item a strong {
+  min-height: 42px;
+}
+.header .logo {
+  width: auto;
+}
+.panel-title a:hover {
+  color: #fff;
+}
+.ms-inner-controls-cont,
+.ms-container {
+  margin: 0;
+}
+
+/*# sourceMappingURL=custom.css.map */

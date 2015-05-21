@@ -43,6 +43,8 @@ elixir(function(mix) {
         .copy('resources/assets/js/plugins/owl-news-products.js', 'public/js/plugins/owl-news-products.js')
         .copy('resources/assets/plugins/fancybox/source', 'public/plugins/fancybox/source')
         .copy('resources/assets/js/plugins/fancy-box.js', 'public/js/plugins/fancy-box.js')
+        .copy('resources/assets/plugins/master-slider/quick-start/masterslider', 'public/plugins/masterslider')
+        .copy('resources/assets/js/plugins/master-slider.js', 'public/js/plugins/master-slider.js')
 
         // AdminLTE
         .copy('resources/assets/bower/adminlte/dist', 'public/adminlte/')

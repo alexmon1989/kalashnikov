@@ -9,9 +9,16 @@ use App\ProductManufacturer;
 use App\ProductProvider;
 use Debugbar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Input;
 
 class ProductsController extends Controller {
+
+    public function __construct()
+    {
+        $data['encrypted_csrf_token'] = Crypt::encrypt(csrf_token());
+        view()->share($data);
+    }
 
 	/**
 	 * Отображает список категорий.
@@ -35,7 +42,7 @@ class ProductsController extends Controller {
      * @param $id
      * @return Response
      */
-    public function getCategory(Request $request, $id)
+    public function getCategory($id)
     {
         // Ищем категорию
         $data['category'] = ProductCategory::with('parentCategory')
@@ -61,11 +68,17 @@ class ProductsController extends Controller {
      */
     public function getShow($id)
     {
+        $data['product'] = Product::with('images')->where('enabled', '=', TRUE)->find($id);
+        if (empty($data['product']))
+        {
+            abort(404);
+        }
 
+        return view('marketing.products.show.show', $data);
     }
 
     /**
-     * Добавление в вид вспомогательных данных категории (продукты, фильтры и пр.)
+     * Добавление в вид вспомогательных данных категории (продукты, фильтры и пр.).
      *
      * @param ProductCategory $category
      */
@@ -90,7 +103,7 @@ class ProductsController extends Controller {
             ->orderBy('title')
             ->get();
 
-        // Продукты категории с постраничным выводом
+        // Продукты категории
         $data['products'] = $category->products()
             ->with('images')
             ->where('enabled', '=', TRUE)
@@ -115,7 +128,9 @@ class ProductsController extends Controller {
             $data['products'] = $data['products']->whereIn('provider_id', Input::get('provider_id'));
         }
 
-        $data['products'] = $data['products']->paginate(12);
+        // Постраничный вывод
+        $data['products'] = $data['products']->paginate(9);
+
         view()->share($data);
     }
 

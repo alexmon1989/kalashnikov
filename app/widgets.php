@@ -32,7 +32,8 @@ Widget::register('news', function()
 // Виджет категорий продуктов на главной странице
 Widget::register('product_categories', function()
 {
-    $data['categories'] = ProductCategory::orderBy('title', 'ASC')
+    $data['categories'] = ProductCategory::with('childCategories')
+                                        ->orderBy('title', 'ASC')
                                         ->where('enabled', '=', TRUE)
                                         ->whereNull('parent_id')
                                         ->get();

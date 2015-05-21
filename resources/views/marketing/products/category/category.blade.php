@@ -1,7 +1,11 @@
 @extends('marketing.layout.master')
 
+@section('meta')
+<meta name="csrf_token" content="{!! $encrypted_csrf_token !!}"/>
+@stop
+
 @section('page_title')
-Продукты
+{{ $category->title }}
 @stop
 
 @section('top_content')
@@ -28,24 +32,35 @@
         <h2>{{ $category->title }} (результатов: {{ $products->count() }})</h2>
         <p>{!! $category->description !!}</p>
         <hr/>
+
+        <!-- Pager -->
+        <div class="text-center">
+            {!! str_replace('/?', '?', $products->appends($pagination_params)->render()) !!}
+        </div>
+        <!-- End Pager -->
+
         @if ($products->count() > 0)
-            @for($i = 0; $i < count($products); $i = $i +4)
+            @for($i = 0; $i < count($products); $i = $i + 3)
                 @if (isset($products[$i]))
                     <!-- Thumbnails v1 -->
                     <div class="row">
-                        @for($j = 0; $j < 4; $j++)
+                        @for($j = 0; $j < 3; $j++)
                         @if (isset($products[$i+$j]))
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="thumbnails thumbnail-style thumbnail-kenburn">
                                 <div class="thumbnail-img">
                                     <div class="overflow-hidden">
                                         <img class="img-responsive" src="{{ count($products[$i+$j]->images) > 0 ? asset('img/products/'.$products[$i+$j]->id.'/'.$products[$i+$j]->images()->first()->file_name) : asset('img/products/no.jpg') }}" alt="{{ $products[$i+$j]->title }}" />
                                     </div>
-                                    <a class="btn-more hover-effect" href="#">Смотреть +</a>
+                                    <a class="btn-more hover-effect" href="{{ action('Marketing\ProductsController@getShow', ['id'=>$products[$i+$j]->id]) }}">Смотреть +</a>
                                 </div>
                                 <div class="caption">
-                                    <h3><a class="hover-effect" href="#">{{ $products[$i+$j]->title }}</a></h3>
-                                    <p>{!! str_limit($products[$i+$j]->description) !!}</p>
+                                    <h3><a class="hover-effect" href="{{ action('Marketing\ProductsController@getShow', ['id'=>$products[$i+$j]->id]) }}">{{ $products[$i+$j]->title }}</a></h3>
+                                    <p><strong>Производитель:</strong> {{ $products[$i+$j]->manufacturer->title }}<br/>
+                                    <strong>Поставщик:</strong> {{ $products[$i+$j]->provider->title }}<br/>
+                                    <strong>Тип упаковки:</strong> {{ $products[$i+$j]->packing }}<br/>
+                                    <strong>Вес:</strong> {{ $products[$i+$j]->weight }}</p>
+                                    <a href="#" class="btn-u btn-u-blue rounded" data-toggle="modal" data-target="#responsive"><i class="fa fa-envelope-square"></i> Узнать стоимость</a>
                                 </div>
                             </div>
                         </div>
@@ -71,3 +86,5 @@
 @clients()
 
 @stop
+
+@include('marketing.layout.price_list_request_modal')

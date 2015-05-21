@@ -53,5 +53,6 @@ Route::group(['namespace' => 'Marketing'], function()
         'contacts'      => 'ContactsController',
         'gallery'       => 'GalleryController',
         'products'      => 'ProductsController',
+        'search'        => 'SearchController',
     ]);
 });
