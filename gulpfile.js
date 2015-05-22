@@ -22,6 +22,7 @@ elixir(function(mix) {
         .copy('resources/assets/css/headers/header-default.css', 'public/css/headers/header-default.css')
         .copy('resources/assets/css/footers/footer-v1.css', 'public/css/footers/footer-v1.css')
         .copy('resources/assets/css/pages/page_404_error.css', 'public/css/pages/page_404_error.css')
+        .copy('resources/assets/css/pages/page_search_inner.css', 'public/css/pages/page_search_inner.css')
         .copy('resources/assets/plugins/animate.css', 'public/plugins/animate.css')
         .copy('resources/assets/plugins/line-icons', 'public/plugins/line-icons')
         .copy('resources/assets/plugins/font-awesome', 'public/plugins/font-awesome')

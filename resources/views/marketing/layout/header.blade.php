@@ -31,10 +31,12 @@
                     <i class="search fa fa-search search-btn"></i>
                     <div class="search-open">
                         <div class="input-group animated fadeInDown">
-                            <input type="text" class="form-control" placeholder="Поиск">
+                            <form action="{{ action('Marketing\SearchController@getIndex') }}" method="get">
+                                <input type="text" name="q" class="form-control" placeholder="Поиск">
                                 <span class="input-group-btn">
-                                    <button class="btn-u" type="button">Искать</button>
+                                    <button class="btn-u" type="submit">Искать</button>
                                 </span>
+                            </form>
                         </div>
                     </div>
                 </li>

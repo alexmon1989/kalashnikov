@@ -30,6 +30,7 @@
 
     <!-- CSS Page Style -->
     <link rel="stylesheet" href="{{ asset('css/pages/page_404_error.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pages/page_search_inner.css') }}">
 
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="{{ asset('plugins/animate.css') }}">
