@@ -23,5 +23,8 @@
 .s-results .inner-results h3 {
   text-transform: none;
 }
+.s-results .inner-results img {
+  width: 165px;
+}
 
 /*# sourceMappingURL=custom.css.map */
