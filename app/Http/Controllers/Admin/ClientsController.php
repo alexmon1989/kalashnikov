@@ -156,7 +156,7 @@ class ClientsController extends AdminController {
         // Если используется, то преобразовываем в серый
         if (Config::get('image.driver') == 'imagick')
         {
-            $img->grayScale();
+            $img->greyscale();
         }
 
         // Сохраняем файл
