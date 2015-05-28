@@ -105,7 +105,7 @@ class ProductsController extends Controller {
 
         // Продукты категории
         $data['products'] = $category->products()
-            ->with('images')
+            ->with('images', 'manufacturer', 'provider')
             ->where('enabled', '=', TRUE)
             ->orderBy('title', 'ASC');
 

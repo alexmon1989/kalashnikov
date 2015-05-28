@@ -35,7 +35,6 @@ var RevolutionSlider = function () {
 	                fullScreenOffsetContainer: ".header"
 	            });
 	        });
-        }        
-
+        }
     };
 }();        

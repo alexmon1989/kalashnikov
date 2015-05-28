@@ -39,8 +39,9 @@ class SettingsController extends AdminController {
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postSavePriceList()
+    public function postSavePriceList(Request $request)
     {
+        Memory::put('price_request.email_to', $request->get('email'));
         return redirect()->back()
                          ->with('success', 'Настройки успешно сохранены.');
     }
