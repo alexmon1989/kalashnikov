@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreGalleryCategoriesRequest;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\File;
 
 class GalleryCategoriesController extends AdminController {
 
@@ -105,7 +106,7 @@ class GalleryCategoriesController extends AdminController {
         // Удаляем все изображения категории с диска
         foreach ($category->images as $image)
         {
-            unlink( public_path('img/gallery/'.$image->file_name) );
+            File::delete( public_path('img/gallery/'.$image->file_name) );
         }
 
         // Удаляем категорию из БД

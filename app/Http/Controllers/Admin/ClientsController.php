@@ -9,6 +9,7 @@ use App\Http\Requests\StoreClientsRequest;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class ClientsController extends AdminController {
 
@@ -111,7 +112,7 @@ class ClientsController extends AdminController {
         $client = $this->findClient($id);
 
         // Удаляем вместе с файлом
-        unlink( $this->thumbDest . $client->file_name );
+        File::delete( $this->thumbDest . $client->file_name );
         $client->delete();
 
         return redirect()->back()->with('success', 'Клиент успешно удалён.');
@@ -165,7 +166,7 @@ class ClientsController extends AdminController {
         // Если есть старый файл, то удаляем его
         if ($old_name)
         {
-            unlink( $this->thumbDest.$old_name );
+            File::delete( $this->thumbDest.$old_name );
         }
 
         return $name.'.'.$upload_file->getClientOriginalExtension();

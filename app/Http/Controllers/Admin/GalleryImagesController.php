@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\StoreGalleryImagesRequest;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class GalleryImagesController extends AdminController {
 
@@ -148,7 +149,7 @@ class GalleryImagesController extends AdminController {
         }
 
         // Удаляем вместе с файлом
-        unlink( $this->thumbDest . $image->file_name );
+        File::delete( $this->thumbDest . $image->file_name );
         $image->delete();
 
         return redirect()->back()->with('success', 'Изображение успешно удалено.');
@@ -214,7 +215,7 @@ class GalleryImagesController extends AdminController {
         // Если есть старый файл, то удаляем его
         if ($old_name)
         {
-            unlink( $this->thumbDest.$old_name );
+            File::delete( $this->thumbDest.$old_name );
         }
 
         return $name.'.'.$upload_file->getClientOriginalExtension();

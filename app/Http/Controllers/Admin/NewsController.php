@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Requests\StoreNewsRequest;
 use Intervention\Image\Facades\Image;
 use Orchestra\Support\Facades\Memory;
+use Illuminate\Support\Facades\File;
 
 class NewsController extends AdminController {
 
@@ -128,7 +129,7 @@ class NewsController extends AdminController {
         }
 
         // Удаляем изображение
-        unlink($this->thumbDest.$news->thumbnail);
+        File::delete($this->thumbDest.$news->thumbnail);
 
         $news->delete();
 
@@ -154,7 +155,7 @@ class NewsController extends AdminController {
         // Если есть старый файл, то удаляем его
         if ($old_name)
         {
-            unlink( $this->thumbDest.$old_name );
+            File::delete( $this->thumbDest.$old_name );
         }
 
         return $name.'.'.$upload_file->getClientOriginalExtension();

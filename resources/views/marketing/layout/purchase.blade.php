@@ -6,7 +6,7 @@
                 <span>Мы - ведущий поставщик продуктов на территории РСО-Алания.</span>
             </div>
             <div class="col-md-3 animated fadeInRight">
-                <a href="#" class="btn-u btn-u-blue btn-u-lg rounded" data-toggle="modal" data-target="#responsive"><i class="fa fa-envelope-square"></i>  Узнать стоимость</a>
+                <a href="#" class="btn-u btn-u-blue btn-u-lg rounded" data-toggle="modal" data-target="#responsive"><i class="fa fa-envelope-square"></i>  Запрос прайс-листа</a>
             </div>
         </div>
     </div>

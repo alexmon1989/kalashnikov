@@ -29,10 +29,10 @@
                         <div class="overflow-hidden">
                             <img class="img-responsive" src="{{ asset('img/product_categories/'.$categories[$i+$j]->file_name) }}" alt="" />
                         </div>
-                        <a class="btn-more hover-effect" href="{{ count($categories[$i+$j]->childCategories) > 0 ? action('Marketing\ProductsController@getCategory', ['id' => $categories[$i+$j]->childCategories()->first()->id]) : '#' }}">Смотреть +</a>
+                        <a class="btn-more hover-effect" href="{{ count($categories[$i+$j]->childCategories) > 0 ? action('Marketing\ProductsController@getCategory', ['id' => $categories[$i+$j]->childCategories[0]->id]) : '#' }}">Смотреть +</a>
                     </div>
                     <div class="caption">
-                        <h3><a class="hover-effect" href="{{ count($categories[$i+$j]->childCategories) > 0 ? action('Marketing\ProductsController@getCategory', ['id' => $categories[$i+$j]->childCategories()->first()->id]) : '#' }}">{{ $categories[$i+$j]->title }}</a></h3>
+                        <h3><a class="hover-effect" href="{{ count($categories[$i+$j]->childCategories) > 0 ? action('Marketing\ProductsController@getCategory', ['id' => $categories[$i+$j]->childCategories[0]->id]) : '#' }}">{{ $categories[$i+$j]->title }}</a></h3>
                         <p>{!! str_limit($categories[$i+$j]->description) !!}</p>
                     </div>
                 </div>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreSliderRequest;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class SliderController extends AdminController {
 
@@ -125,7 +126,7 @@ class SliderController extends AdminController {
         }
 
         // Удаляем вместе с файлом
-        unlink( $this->thumbDest . $slider->file_name );
+        File::delete( $this->thumbDest . $slider->file_name );
         $slider->delete();
 
         return redirect()->back()->with('success', 'Слайд успешно удалён.');
@@ -212,7 +213,7 @@ class SliderController extends AdminController {
         // Если есть старый файл, то удаляем его
         if ($old_name)
         {
-            unlink( $this->thumbDest.$old_name );
+            File::delete( $this->thumbDest.$old_name );
         }
 
         return $name.'.'.$upload_file->getClientOriginalExtension();
