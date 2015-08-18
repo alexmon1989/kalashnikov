@@ -2,7 +2,7 @@
 <div class="header">
     <div class="container">
         <!-- Logo -->
-        <a class="logo" href="http://u9181616.isp.regruhosting.ru/">
+        <a class="logo" href="http://kalashnikovcom.ru/">
             <img src="{{ asset('img/logo1-default.png') }}" alt="Логотип">
         </a>
         <!-- End Logo -->

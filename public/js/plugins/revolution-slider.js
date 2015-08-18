@@ -6,6 +6,8 @@ var RevolutionSlider = function () {
         initRSfullWidth: function () {
 		    var revapi;
 	        jQuery(document).ready(function() {
+
+		    jQuery(".tp-banner").show();	
 	            revapi = jQuery('.tp-banner').revolution(
 	            {
 	                delay:9000,

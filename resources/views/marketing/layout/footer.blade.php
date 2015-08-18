@@ -16,7 +16,7 @@
                 <div class="col-md-3 md-margin-bottom-40">
                     <div class="headline"><h2>Ссылки</h2></div>
                     <ul class="list-unstyled link-list">
-                        <li><a href="http://u9181616.isp.regruhosting.ru/">Стартовая страница</a><i class="fa fa-angle-right"></i></li>
+                        <li><a href="http://kalashnikovcom.ru/">Стартовая страница</a><i class="fa fa-angle-right"></i></li>
                         <li><a href="{{ action('Marketing\AboutController@getIndex') }}">О компании</a><i class="fa fa-angle-right"></i></li>
                         <li><a href="{{ action('Marketing\NewsController@getIndex') }}">Новости</a><i class="fa fa-angle-right"></i></li>
                         <li><a href="{{ action('Marketing\ProductsController@getIndex') }}">Продукция</a><i class="fa fa-angle-right"></i></li>

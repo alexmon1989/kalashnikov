@@ -1,6 +1,6 @@
 <!--=== Slider ===-->
 <div class="tp-banner-container">
-    <div class="tp-banner">
+    <div class="tp-banner" style="display: none">
         <ul>
             @foreach($sliders as $slider)
             <!-- SLIDE -->

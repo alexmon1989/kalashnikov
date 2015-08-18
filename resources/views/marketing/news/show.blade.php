@@ -40,7 +40,7 @@
             <img class="img-responsive" src="{{ asset('img/thumb/'.$item->thumbnail) }}" alt="">
         </div>
         <div class="news-v2-desc">
-            <h3><a href="#">{{ $item->title }}</a></h3>
+            <h3><a href="{{ action('Marketing\NewsController@getShow', array('id' => $item->id)) }}">{{ $item->title }}</a></h3>
             <small>Создано {{ date('d.m.Y', strtotime($item->created_at)) }}</small>
             <p>{{ $item->preview_text_small }}</p>
         </div>
