@@ -94,8 +94,8 @@
                 <a href="{{ action('Admin\SliderController@getIndex') }}"><i class="fa fa-image"></i> Слайдер</a>
             </li>
 
-            <li class="{{ Request::segment(2) == 'clients' ? 'active' : '' }}">
-                <a href="{{ action('Admin\ClientsController@getIndex') }}"><i class="fa fa-rub"></i> Наши клиенты</a>
+            <li class="{{ Request::segment(2) == 'partners' ? 'active' : '' }}">
+                <a href="{{ action('Admin\PartnersController@getIndex') }}"><i class="fa fa-rub"></i> Наши партнёры</a>
             </li>
 
             <li class="{{ Request::segment(2) == 'votes' ? 'active' : '' }}">
