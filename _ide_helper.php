@@ -1,7 +1,7 @@
 <?php
 /**
- * An helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.0.31 on 2015-05-19.
+ * A helper file for Laravel 5, to provide autocomplete information to your IDE
+ * Generated for Laravel 5.0.33 on 2015-08-20.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1433,7 +1433,7 @@ namespace {
         }
         
         /**
-         * Return the currently cached user of the application.
+         * Return the currently cached user.
          *
          * @return \App\User|null 
          * @static 
@@ -1443,7 +1443,7 @@ namespace {
         }
         
         /**
-         * Set the current user of the application.
+         * Set the current user.
          *
          * @param \Illuminate\Contracts\Auth\Authenticatable $user
          * @return void 
@@ -1809,7 +1809,7 @@ namespace {
         }
         
         /**
-         * Register command to handler mappings.
+         * Register command-to-handler mappings.
          *
          * @param array $commands
          * @return void 
@@ -1844,7 +1844,7 @@ namespace {
         }
         
         /**
-         * Set the pipes commands should be piped through before dispatching.
+         * Set the pipes through which commands should be piped before dispatching.
          *
          * @param array $pipes
          * @return $this 
@@ -5732,7 +5732,7 @@ namespace {
          * @param array $cookies The COOKIE parameters
          * @param array $files The FILES parameters
          * @param array $server The SERVER parameters
-         * @param string $content The raw body data
+         * @param string|resource $content The raw body data
          * @api 
          * @static 
          */
@@ -7476,6 +7476,7 @@ namespace {
          * @param mixed $data
          * @param string $queue
          * @return mixed 
+         * @throws \Exception
          * @static 
          */
         public static function push($job, $data = '', $queue = null){
@@ -8349,7 +8350,7 @@ namespace {
          * @param array $cookies The COOKIE parameters
          * @param array $files The FILES parameters
          * @param array $server The SERVER parameters
-         * @param string $content The raw body data
+         * @param string|resource $content The raw body data
          * @api 
          * @static 
          */
@@ -11616,29 +11617,27 @@ namespace {
          *
          * @param string $name
          * @param string|callable $callback
-         * @return void 
          * @static 
          */
         public static function register($name, $callback){
-            \Pingpong\Widget\Widget::register($name, $callback);
+            return \Pingpong\Widget\Widget::register($name, $callback);
         }
         
         /**
          * Register widget using a specified handler class.
          *
          * @param string $subscriber
-         * @return void 
          * @static 
          */
         public static function subscribe($subscriber){
-            \Pingpong\Widget\Widget::subscribe($subscriber);
+            return \Pingpong\Widget\Widget::subscribe($subscriber);
         }
         
         /**
          * Determine whether a widget there or not.
          *
          * @param string $name
-         * @return boolean 
+         * @return bool 
          * @static 
          */
         public static function has($name){
@@ -11674,18 +11673,17 @@ namespace {
          *
          * @param string $name
          * @param array $widgets
-         * @return void 
          * @static 
          */
         public static function group($name, $widgets){
-            \Pingpong\Widget\Widget::group($name, $widgets);
+            return \Pingpong\Widget\Widget::group($name, $widgets);
         }
         
         /**
          * Determine whether a group of widgets there or not.
          *
          * @param string $name
-         * @return boolean 
+         * @return bool 
          * @static 
          */
         public static function hasGroup($name){
