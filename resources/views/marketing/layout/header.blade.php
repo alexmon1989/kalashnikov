@@ -7,6 +7,23 @@
         </a>
         <!-- End Logo -->
 
+        <!-- Topbar -->
+        <div class="topbar">
+            <ul class="loginbar pull-right">
+                <li class="hoverSelector">
+                    <i class="fa fa-globe"></i>
+                    <a>Филиал</a>
+                    <ul class="languages hoverSelectorBlock">
+                        <li class="active">
+                            <a href="http://vladikavkaz.kalashnikovcom.ru">Владикавказ {!! preg_match('/vladikavkaz.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
+                        </li>
+                        <li><a href="http://krasnodar.kalashnikovcom.ru">Краснодар {!! preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- End Topbar -->
+
         <!-- Toggle get grouped for better mobile display -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
             <span class="sr-only">Toggle navigation</span>
