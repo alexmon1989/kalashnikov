@@ -4,7 +4,7 @@ use App\News;
 use App\Article;
 use App\GalleryImage;
 use App\Slider;
-use App\Client;
+use App\Partner;
 use App\Vote;
 use App\ProductCategory;
 
@@ -41,14 +41,14 @@ Widget::register('product_categories', function()
     return view('marketing.widgets.product_categories', $data);
 });
 
-// Виджет клиентов
+// Виджет партнёров
 Widget::register('clients', function()
 {
     // Получение клиентов из БД
-    $data['clients'] = Client::where('enabled', '=', TRUE)
+    $data['partners'] = Partner::where('enabled', '=', TRUE)
                             ->orderBy('created_at', 'DESC')->get();
 
-    return view('marketing.widgets.clients', $data);
+    return view('marketing.widgets.partners', $data);
 });
 
 // Виджет голосования

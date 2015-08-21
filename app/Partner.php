@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model {
+class Partner extends Model {
 
-	//
+    //
 
 }

@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         'gallery/categories'        => 'GalleryCategoriesController',
         'gallery/images'            => 'GalleryImagesController',
         'slider'                    => 'SliderController',
-        'clients'                   => 'ClientsController',
+        'partners'                  => 'PartnersController',
         'votes'                     => 'VotesController',
         'settings'                  => 'SettingsController',
         'products/list'             => 'ProductsController',

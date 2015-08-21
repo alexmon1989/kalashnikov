@@ -1,17 +1,17 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Client;
+use App\Partner;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreClientsRequest;
+use App\Http\Requests\StorePartnersRequest;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 
-class ClientsController extends AdminController {
+class PartnersController extends AdminController {
 
     // Расположение картинок
     protected $thumbDest;
@@ -19,121 +19,123 @@ class ClientsController extends AdminController {
     public function __construct()
     {
         parent::__construct();
-        $this->thumbDest = public_path('img/clients/');
+        $this->thumbDest = public_path('img/partners/');
     }
 
 	/**
-	 * Отображение страницы со списком клиентов
+	 * Отображение страницы со списком партнёров
 	 *
 	 * @return Response
 	 */
 	public function getIndex()
 	{
-		$data['clients'] = Client::all();
+		$data['partners'] = Partner::all();
 
-        return view('admin.clients.index', $data);
+        return view('admin.partners.index', $data);
 	}
 
     /**
-     * Отображение страницы добавления клиента
+     * Отображение страницы добавления партнёра
      *
      * @return Response
      */
     public function getCreate()
     {
-        return view('admin.clients.create');
+        return view('admin.partners.create');
 
     }
 
     /**
-     * бработчик запроса на создание клиента
+     * Обработчик запроса на создание партнёра
      *
-     * @param StoreClientsRequest $request
+     * @param StorePartnersRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postCreate(StoreClientsRequest $request)
+    public function postCreate(StorePartnersRequest $request)
     {
-        $client = new Client;
-        $client->title = trim($request->get('title'));
-        $client->file_name = $this->saveImageToDisk();
-        $client->enabled = $request->get('enabled', FALSE);
-        $client->save();
+        $partner = new Partner;
+        $partner->title = trim($request->get('title'));
+        $partner->url = trim($request->get('url'));
+        $partner->file_name = $this->saveImageToDisk();
+        $partner->enabled = $request->get('enabled', FALSE);
+        $partner->save();
 
-        return redirect()->action('Admin\ClientsController@getEdit', array('id' => $client->id))
-            ->with('success', 'Клиент успешно создан.');
+        return redirect()->action('Admin\PartnersController@getEdit', array('id' => $partner->id))
+            ->with('success', 'Партнёр успешно создан.');
     }
 
     /**
-     * Страница редактирования клиента
+     * Страница редактирования партнёра
      *
      * @param $id
      * @return \Illuminate\View\View
      */
     public function getEdit($id)
     {
-        $data['client'] = $this->findClient($id);
+        $data['partner'] = $this->findPartner($id);
 
-        return view('admin.clients.edit', $data);
+        return view('admin.partners.edit', $data);
 
     }
 
     /**
-     * Обработчик запроса на редактирвоание клиента
+     * Обработчик запроса на редактирвоание партнёра
      *
-     * @param StoreClientsRequest $request
+     * @param StorePartnersRequest $request
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postEdit(StoreClientsRequest $request, $id)
+    public function postEdit(StorePartnersRequest $request, $id)
     {
-        // Ищем клиента
-        $client = $this->findClient($id);
-        $client->title = trim($request->get('title'));
+        // Ищем партнёра
+        $partner = $this->findPartner($id);
+        $partner->title = trim($request->get('title'));
+        $partner->url = trim($request->get('url'));
         if ($request->hasFile('file_name'))
         {
-            $client->file_name = $this->saveImageToDisk($client->file_name);
+            $partner->file_name = $this->saveImageToDisk($partner->file_name);
         }
-        $client->enabled = $request->get('enabled', FALSE);
-        $client->save();
+        $partner->enabled = $request->get('enabled', FALSE);
+        $partner->save();
 
-        return redirect()->action('Admin\ClientsController@getEdit', array('id' => $id))
-            ->with('success', 'Клиент успешно изменён.');
+        return redirect()->action('Admin\PartnersController@getEdit', array('id' => $id))
+            ->with('success', 'Партнёр успешно изменён.');
     }
 
     /**
-     * Удаление клиента
+     * Удаление партнёра
      *
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function getDelete($id)
     {
-        // Ищем клиента
-        $client = $this->findClient($id);
+        // Ищем партнёра
+        $partner = $this->findPartner($id);
 
         // Удаляем вместе с файлом
-        File::delete( $this->thumbDest . $client->file_name );
-        $client->delete();
+        File::delete( $this->thumbDest . $partner->file_name );
+        $partner->delete();
 
-        return redirect()->back()->with('success', 'Клиент успешно удалён.');
+        return redirect()->back()->with('success', 'Партнёр успешно удалён.');
     }
 
     /**
-     * Поиск клиента в БД по ид или переадресация на 404
+     * Поиск партнёра в БД по ид или переадресация на 404
      *
      * @param $id
      * @return \Illuminate\Support\Collection|null|static
      */
-    private function findClient($id)
+    private function findPartner($id)
     {
-        // Ищем клиента
-        $client = Client::find($id);
-        if (empty($client))
+        // Ищем партнёра
+        $partner = Partner::find($id);
+        if (empty($partner))
         {
             abort(404);
         }
 
-        return $client;
+        return $partner;
     }
 
     /**
