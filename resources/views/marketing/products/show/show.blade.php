@@ -24,7 +24,7 @@
 
 @section('content')
 
-<div class="row">
+<div class="row margin-bottom-60">
 
     <div class="col-md-6">
         <div class="ms-showcase2-template">
@@ -72,7 +72,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <a href="#" class="btn-u btn-u-blue btn-u-lg rounded" data-toggle="modal" data-target="#responsive"><i class="fa fa-envelope-square"></i> Узнать цену</a>
+                <a href="#" class="btn-u btn-u-blue btn-u-lg rounded" data-toggle="modal" data-target="#responsive"><i class="fa fa-envelope-square"></i> Узнать стоимость</a>
             </div>
         </div>
     </div>

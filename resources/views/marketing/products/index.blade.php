@@ -27,9 +27,10 @@
                 <div class="thumbnails thumbnail-style thumbnail-kenburn">
                     <div class="thumbnail-img">
                         <div class="overflow-hidden">
-                            <img class="img-responsive" src="{{ asset('img/product_categories/'.$categories[$i+$j]->file_name) }}" alt="" />
+                            <a href="{{ count($categories[$i+$j]->childCategories) > 0 ? action('Marketing\ProductsController@getCategory', ['id' => $categories[$i+$j]->childCategories[0]->id]) : '#' }}">
+                                <img class="img-responsive" src="{{ asset('img/product_categories/'.$categories[$i+$j]->file_name) }}" alt="" />
+                            </a>
                         </div>
-                        <a class="btn-more hover-effect" href="{{ count($categories[$i+$j]->childCategories) > 0 ? action('Marketing\ProductsController@getCategory', ['id' => $categories[$i+$j]->childCategories[0]->id]) : '#' }}">Смотреть +</a>
                     </div>
                     <div class="caption">
                         <h3><a class="hover-effect" href="{{ count($categories[$i+$j]->childCategories) > 0 ? action('Marketing\ProductsController@getCategory', ['id' => $categories[$i+$j]->childCategories[0]->id]) : '#' }}">{{ $categories[$i+$j]->title }}</a></h3>
