@@ -2,7 +2,7 @@
 <div class="header">
     <div class="container">
         <!-- Logo -->
-        <a class="logo" href="http://kalashnikovcom.ru/">
+        <a class="logo" href="{{ url() }}">
             <img src="{{ asset('img/logo1-default.png') }}" alt="Логотип">
         </a>
         <!-- End Logo -->
@@ -41,6 +41,7 @@
                 <li class="{{ Request::segment(1) == 'main' || Request::segment(1) == '' ? 'active' : '' }}"><a href="{{ action('Marketing\MainController@index') }}">Главная</a></li>
                 <li class="{{ Request::segment(1) == 'about' ? 'active' : '' }}"><a href="{{ action('Marketing\AboutController@getIndex') }}">О компании</a></li>
                 <li class="{{ Request::segment(1) == 'news' ? 'active' : '' }}"><a href="{{ action('Marketing\NewsController@getIndex') }}">Новости</a></li>
+                <li class="{{ Request::segment(1) == 'promotions' ? 'active' : '' }}"><a href="{{ action('Marketing\PromotionsController@getIndex') }}">Промо-акции</a></li>
                 <li class="{{ Request::segment(1) == 'products' ? 'active' : '' }}"><a href="{{ action('Marketing\ProductsController@getIndex') }}">Продукция</a></li>
                 <li class="{{ Request::segment(1) == 'gallery' ? 'active' : '' }}"><a href="{{ action('Marketing\GalleryController@getIndex') }}">Галерея</a></li>
                 <li class="{{ Request::segment(1) == 'contacts' ? 'active' : '' }}"><a href="{{ action('Marketing\ContactsController@getIndex') }}">Контакты</a></li>

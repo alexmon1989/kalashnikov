@@ -44,6 +44,12 @@
                 </a>
             </li>
 
+            <li class="{{ Request::segment(2) == 'promotions' ? 'active' : '' }}">
+                <a href="{{ action('Admin\PromotionsController@getIndex') }}">
+                    <i class="fa fa-thumbs-up"></i> <span>Промо-акции</span>
+                </a>
+            </li>
+
             <li class="{{ Request::segment(2) == 'about' ? 'active' : '' }}">
                 <a href="{{ action('Admin\AboutController@getIndex') }}"><i class="fa fa-building"></i> О Компании</a>
             </li>
