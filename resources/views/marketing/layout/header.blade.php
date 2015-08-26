@@ -14,10 +14,12 @@
                     <i class="fa fa-globe"></i>
                     <a>Филиал</a>
                     <ul class="languages hoverSelectorBlock">
-                        <li class="active">
+                        <li class="{{ preg_match('/vladikavkaz.kalashnikovcom.ru/i', url()) ? 'active' : '' }}">
                             <a href="http://vladikavkaz.kalashnikovcom.ru">Владикавказ {!! preg_match('/vladikavkaz.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
                         </li>
-                        <li><a href="http://krasnodar.kalashnikovcom.ru">Краснодар {!! preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a></li>
+                        <li class="{{ preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? 'active' : '' }}">
+                            <a href="http://krasnodar.kalashnikovcom.ru">Краснодар {!! preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
