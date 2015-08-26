@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::controllers([
         'dashboard'                 => 'DashboardController',
         'news'                      => 'NewsController',
+        'promotions'                => 'PromotionsController',
         'main/article'              => 'MainArticleController',
         'main/info-blocks'          => 'InfoBlocksController',
         'about'                     => 'AboutController',
@@ -49,6 +50,7 @@ Route::group(['namespace' => 'Marketing'], function()
 {
     Route::controllers([
         'news'          => 'NewsController',
+        'promotions'    => 'PromotionsController',
         'about'         => 'AboutController',
         'contacts'      => 'ContactsController',
         'gallery'       => 'GalleryController',
