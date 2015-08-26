@@ -50,9 +50,10 @@
                             <div class="thumbnails thumbnail-style thumbnail-kenburn">
                                 <div class="thumbnail-img">
                                     <div class="overflow-hidden">
-                                        <img class="img-responsive" src="{{ count($products[$i+$j]->images) > 0 ? asset('img/products/'.$products[$i+$j]->id.'/'.$products[$i+$j]->images()->first()->file_name) : asset('img/products/no.jpg') }}" alt="{{ $products[$i+$j]->title }}" />
+                                        <a href="{{ action('Marketing\ProductsController@getShow', ['id'=>$products[$i+$j]->id]) }}">
+                                            <img class="img-responsive" src="{{ count($products[$i+$j]->images) > 0 ? asset('img/products/'.$products[$i+$j]->id.'/'.$products[$i+$j]->images()->first()->file_name) : asset('img/products/no.jpg') }}" alt="{{ $products[$i+$j]->title }}" />
+                                        </a>
                                     </div>
-                                    <a class="btn-more hover-effect" href="{{ action('Marketing\ProductsController@getShow', ['id'=>$products[$i+$j]->id]) }}">Смотреть +</a>
                                 </div>
                                 <div class="caption">
                                     <h3><a class="hover-effect" href="{{ action('Marketing\ProductsController@getShow', ['id'=>$products[$i+$j]->id]) }}">{{ $products[$i+$j]->title }}</a></h3>
