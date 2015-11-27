@@ -108,6 +108,10 @@
                 <a href="{{ action('Admin\VotesController@getIndex') }}"><i class="fa fa-question "></i> Опросы</a>
             </li>
 
+            <li class="{{ Request::segment(2) == 'vacancies' ? 'active' : '' }}">
+                <a href="{{ action('Admin\VacanciesController@getIndex') }}"><i class="fa fa-tty"></i> Вакансии</a>
+            </li>
+
             <li class="{{ Request::segment(2) == 'auth' ? 'active' : '' }}">
                 <a href="{{ action('Admin\Auth\AuthController@getList') }}"><i class="fa fa-users "></i> Пользователи</a>
             </li>

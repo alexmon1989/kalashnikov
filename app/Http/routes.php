@@ -38,6 +38,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         'products/categories'       => 'ProductCategoriesController',
         'products/providers'        => 'ProductProvidersController',
         'products/manufacturers'    => 'ProductManufacturersController',
+        'vacancies'                 => 'VacanciesController',
     ]);
 });
 
@@ -56,5 +57,6 @@ Route::group(['namespace' => 'Marketing'], function()
         'gallery'       => 'GalleryController',
         'products'      => 'ProductsController',
         'search'        => 'SearchController',
+        'vacancies'     => 'VacanciesController',
     ]);
 });
