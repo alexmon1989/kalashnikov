@@ -41,13 +41,7 @@ h2.panel-title a:hover {
 .header .topbar ul.loginbar > li > a:hover {
   font-weight: bold;
   color: #72c02c;
-  font-size: 12px;
-}
-.acc-v1 .panel-heading a {
-    background: #fefefe none repeat scroll 0 0;
-    display: block;
-    font-size: 14px;
-    padding: 5px 15px;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=custom.css.map */

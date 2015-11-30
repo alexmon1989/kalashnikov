@@ -15,10 +15,10 @@
                     <a>Филиал</a>
                     <ul class="languages hoverSelectorBlock">
                         <li class="{{ preg_match('/vladikavkaz.kalashnikovcom.ru/i', url()) ? 'active' : '' }}">
-                            <a href="http://vladikavkaz.kalashnikovcom.ru/{{ Request::path() }}?from_second=1">Владикавказ {!! preg_match('/vladikavkaz.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
+                            <a target="_blank" href="http://vladikavkaz.kalashnikovcom.ru/{{ Request::path() != '/' ? Request::path() : '' }}?from_second=1">Владикавказ {!! preg_match('/vladikavkaz.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
                         </li>
                         <li class="{{ preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? 'active' : '' }}">
-                            <a href="http://krasnodar.kalashnikovcom.ru/{{ Request::path() }}?from_second=1">Краснодар {!! preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
+                            <a target="_blank" href="http://krasnodar.kalashnikovcom.ru/{{ Request::path() != '/' ? Request::path() : '' }}?from_second=1">Краснодар {!! preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
                         </li>
                     </ul>
                 </li>
