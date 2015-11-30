@@ -60,6 +60,11 @@ class Handler extends ExceptionHandler {
             $prefix = 'admin.';
         }
 
+        // Проверяем, не было ли перехода с зеркального сайта. Если был - переходим на главную.
+        if ($status == '404' && $prefix != 'admin.' && Request::get('from_second') == 1) {
+            return redirect()->action('Marketing\MainController@index');
+        }
+
         if (view()->exists($prefix."errors.{$status}"))
         {
             return response()->view("$prefix.errors.{$status}", [], $status);
