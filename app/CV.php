@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CV extends Model
 {
-    protected $table = 'cv';
+    protected $table = 'cvs';
+
+    protected $fillable = ['data_json'];
 }
