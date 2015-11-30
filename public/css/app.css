@@ -672,7 +672,7 @@ h3.heading-xs {
 
 .tab-v1 .nav-tabs > .active > a, 
 .tab-v1 .nav-tabs > .active > a:hover, 
-.tab-v1 .nav-tabs > .active > a:focus {
+.tab-v1 .nav-tabs > .active > a:focus { 
   color: #fff;
   border: none; 
   background: #72c02c; 
