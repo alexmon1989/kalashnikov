@@ -45,6 +45,7 @@
                 <li class="{{ Request::segment(1) == 'products' ? 'active' : '' }}"><a href="{{ action('Marketing\ProductsController@getIndex') }}">Продукция</a></li>
                 <li class="{{ Request::segment(1) == 'gallery' ? 'active' : '' }}"><a href="{{ action('Marketing\GalleryController@getIndex') }}">Галерея</a></li>
                 <li class="{{ Request::segment(1) == 'contacts' ? 'active' : '' }}"><a href="{{ action('Marketing\ContactsController@getIndex') }}">Контакты</a></li>
+                <li class="{{ Request::segment(1) == 'vacancies' ? 'active' : '' }}"><a href="{{ action('Marketing\VacanciesController@getIndex') }}">Вакансии</a></li>
 
                 <!-- Search Block -->
                 <li>

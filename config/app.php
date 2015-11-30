@@ -207,7 +207,7 @@ return [
         'Memory'    => 'Orchestra\Support\Facades\Memory',
         'Form'      => 'Illuminate\Html\FormFacade',
         'HTML'      => 'Illuminate\Html\HtmlFacade',
-        'Debugbar' => 'Barryvdh\Debugbar\Facade',
+        'Debugbar' 	=> 'Barryvdh\Debugbar\Facade',
 
 	],
 

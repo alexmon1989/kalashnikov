@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class OrchestraMemoryCreateOptionsTable extends Migration
+class CreateCvsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +12,11 @@ class OrchestraMemoryCreateOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('orchestra_options', function (Blueprint $table) {
+        Schema::create('cvs', function(Blueprint $table)
+        {
             $table->increments('id');
-            $table->string('name', 64);
-            $table->longText('value');
-
-            $table->unique('name');
+            $table->text('data_json')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -29,6 +27,9 @@ class OrchestraMemoryCreateOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('orchestra_options');
+        Schema::table('cvs', function(Blueprint $table)
+        {
+            $table->dropIfExists();
+        });
     }
 }
