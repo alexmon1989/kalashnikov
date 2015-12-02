@@ -43,5 +43,12 @@ h2.panel-title a:hover {
   color: #72c02c;
   font-size: 20px;
 }
+.our-partners .col-xs-1 {
+  padding-top: 30px;
+}
+.our-partners .col-xs-1 .prev-clients,
+.our-partners .col-xs-1 .next-clients {
+  padding: 5px 13px;
+}
 
 /*# sourceMappingURL=custom.css.map */
