@@ -27,7 +27,9 @@ class VacanciesController extends Controller {
 	 */
 	public function getIndex()
 	{
-        $data['vacancies'] = Vacancy::whereEnabled(TRUE)->orderBy('created_at')->get();
+        $data['vacancies'] = Vacancy::whereEnabled(TRUE)
+            ->orderBy('created_at', 'DESC')
+            ->get();
         return view('marketing.vacancies.index', $data);
 	}
 
@@ -49,7 +51,7 @@ class VacanciesController extends Controller {
         Mail::raw('', function($message) use ($request, $filePath)
         {
             $message->from($request->email, $request->username);
-            $message->subject('Резюме, отправленное через сайт');
+            $message->subject('Резюме, отправленное через сайт. Вакансия: '.Vacancy::find($request->vacancy_id)->title);
             $message->to(Memory::get('vacancies.email', 'hr@kalashnikovcom.ru'));
             $message->attach($filePath);
         });
@@ -68,7 +70,10 @@ class VacanciesController extends Controller {
 	 */
 	public function getFormCV()
 	{
-        $data['vacancies'] = Vacancy::whereEnabled(TRUE)->orderBy('created_at')->get();
+        $data['vacancies'] = Vacancy::whereEnabled(TRUE)
+            ->where('title', '<>', 'Резерв')
+            ->orderBy('created_at', 'DESC')
+            ->get();
 
         // Отображаем представление
         return view('marketing.vacancies.form_cv', $data);
@@ -107,7 +112,9 @@ class VacanciesController extends Controller {
         );
 
         // Вакансия
-        $vacancyTitle = Vacancy::find($request->vacancy_id)->title;
+        $vacancyTitle = $request->vacancy_id != 'another'
+                                            ? Vacancy::find($request->vacancy_id)->title
+                                            : $request->another_vacancy;
         $section->addText(
             htmlspecialchars($vacancyTitle),
             ['size' => 15, 'color' => '6E6E6E']
@@ -466,16 +473,28 @@ class VacanciesController extends Controller {
             }
         }
 
+        if (trim($request->covering_letter) != '') {
+            $table->addRow();
+            $table->addCell(5000)->addText('Сопроводительное письмо', ['bold' => true]);
+            $cell = $table->addCell(5000);
+            $covering_letter = explode("\r\n", $request->covering_letter);
+            foreach ($covering_letter as $item) {
+                $cell->addText(
+                    htmlspecialchars($item)
+                );
+            }
+        }
+
         // Сохранение
         $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
         $filePath = 'temp_cv'. DIRECTORY_SEPARATOR .Str::random().'.docx';
         $objWriter->save($filePath);
 
         // Отправляем письмо
-        Mail::raw('', function($message) use ($request, $filePath)
+        Mail::raw('', function($message) use ($request, $filePath, $vacancyTitle)
         {
             $message->from($request->email, $request->username);
-            $message->subject('Резюме, заполненное с помощью анкеты на сайте');
+            $message->subject('Резюме, заполненное с помощью анкеты на сайте. Вакансия: '.$vacancyTitle);
             $message->to(Memory::get('vacancies.email', 'hr@kalashnikovcom.ru'));
             $message->attach($filePath);
         });

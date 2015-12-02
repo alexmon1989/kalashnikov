@@ -3,7 +3,7 @@
 class StoreCVFormRequest extends Request {
 
     protected $rules = [
-        'vacancy_id'                => 'required|exists:vacancies,id',
+        'vacancy_id'                => 'required',
         'username'                  => 'required|max:255',
         'photo'                     => 'required|max:1024|mimes:jpeg,bmp,png',
         'birthdate'                 => 'required|max:255',
@@ -76,6 +76,11 @@ class StoreCVFormRequest extends Request {
 	 */
 	public function rules()
 	{
+        if (Request::get('vacancy_id') != 'another') {
+            $this->rules['vacancy_id'] .= '|exists:vacancies,id';
+        } else {
+            $this->rules['another_vacancy'] = 'required|max:255';
+        }
 		return $this->rules;
 	}
 
@@ -89,6 +94,9 @@ class StoreCVFormRequest extends Request {
         return [
             'vacancy_id.required' => 'Поле "Вакансия" обязательно для заполнения.',
             'vacancy_id.exists' => 'Поле "Вакансия" должно содержать существующую вакансию.',
+
+            'another_vacancy.required' => 'Поле "Введите нужную вакансию" обязательно для заполнения.',
+            'another_vacancy.max' => 'Максимально допустимое количество символов в поле "Введите нужную вакансию" - 255.',
 
             'username.required' => 'Поле "ФИО" обязательно для заполнения.',
             'username.max' => 'Максимально допустимое количество символов в поле "ФИО" - 255.',

@@ -3,7 +3,7 @@
     <div class="box-body">
         <div class="form-group">
             <label for="title">Название</label>
-            <input type="title" placeholder="Название" id="title" name="title" class="form-control" value="{{ old('title', isset($vacancy) ? $vacancy->title : '') }}">
+            <input type="text" placeholder="Название" id="title" name="title" class="form-control" value="{{ old('title', isset($vacancy) ? $vacancy->title : '') }}">
         </div>
         <div class="checkbox">
             <label>

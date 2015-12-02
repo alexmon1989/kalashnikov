@@ -50,3 +50,7 @@
 @clients()
 
 @stop
+
+@section('scripts')
+    <script src="{{ asset('js/pages/form-c-v.js') }}"></script>
+@stop

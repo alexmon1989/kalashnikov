@@ -9,6 +9,7 @@ use App\News;
 use App\Vacancy;
 use Illuminate\Support\Facades\Input;
 use App\Http\Requests\StoreVacanciesRequest;
+use App\Http\Requests\StoreVacanciesSettingsRequest;
 use Intervention\Image\Facades\Image;
 use Orchestra\Support\Facades\Memory;
 use Illuminate\Support\Facades\File;
@@ -22,7 +23,7 @@ class VacanciesController extends AdminController {
 	 */
 	public function getIndex()
 	{
-        $data['vacancies'] = Vacancy::all();
+        $data['vacancies'] = Vacancy::where('title', '<>', 'Резерв')->get();
 
 		return view('admin.vacancies.index', $data);
 	}
@@ -93,6 +94,19 @@ class VacanciesController extends AdminController {
         return redirect()->action('Admin\VacanciesController@getEdit', ['id' => $vacancy->id])
                         ->with('success', 'Вакансия успешно сохранена.');
 	}
+
+    /**
+     * Действие для сохранения настроек модуля.
+     *
+     * @param StoreVacanciesSettings $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postSaveSettings(StoreVacanciesSettingsRequest $request)
+    {
+        Memory::put('vacancies.email', $request->email);
+
+        return redirect()->back()->with('success', 'Натсройки успешно сохранены.');
+    }
 
 	/**
 	 * Удаляет вакансию

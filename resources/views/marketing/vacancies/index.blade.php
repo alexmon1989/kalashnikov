@@ -23,6 +23,7 @@
         <!-- Accordion v1 -->
         <div class="panel-group acc-v1" id="accordion-1">
             @foreach($vacancies as $vacancy)
+            @if ($vacancy->title != 'Резерв')
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -37,11 +38,13 @@
                     </div>
                 </div>
             </div>
+            @endif
             @endforeach
         </div>
         <!-- End Accordion v1 -->
 
-        <p>Присылайте нам своё резюме с помощью формы справа, а если у вас нету готового резюме, вы можете заполнить нашу специальную форму, перейдя по этой <a href="{{ action('Marketing\VacanciesController@getFormCV') }}">ссылке</a>.</p>
+        <p>Присылайте нам своё резюме с помощью формы справа. Если в списке вакансий нет той, которая интересует вас, выберите "Резерв".
+        А если у вас нету готового резюме, вы можете заполнить нашу специальную форму, перейдя по этой <strong><a href="{{ action('Marketing\VacanciesController@getFormCV') }}">ссылке</a></strong>.</p>
     </div>
 
     <div class="col-md-4">

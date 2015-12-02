@@ -4,15 +4,24 @@
         <section>
             <label class="label">Вакансия</label>
             <label class="select">
-                <select name="vacancy_id">
+                <select name="vacancy_id" id="vacancy_id">
                     <option value="0">Выбирайте вакансию</option>
                     @foreach($vacancies as $vacancy)
                         <option value="{{ $vacancy->id }}" {{ old('vacancy_id') == $vacancy->id ? 'selected="selected" ' : '' }}>{{ $vacancy->title }}</option>
                     @endforeach
+                    <option value="another" {{ old('vacancy_id') == 'another' ? 'selected="selected" ' : '' }}>Указать другую вакансию</option>
                 </select>
                 <i></i>
             </label>
         </section>
+
+        <section style="display: none" id="another_vacancy">
+            <label class="label">Введите нужную вакансию</label>
+            <label class="input">
+                <input type="text" name="another_vacancy" value="{{ old('another_vacancy') }}">
+            </label>
+        </section>
+
 
         <section>
             <label class="label">ФИО</label>
@@ -472,6 +481,13 @@
             <label class="label">Дополнительная информация</label>
             <label class="textarea textarea-expandable">
                 <textarea rows="3" name="add_info">{{ old('add_info') }}</textarea>
+            </label>
+        </section>
+
+        <section>
+            <label class="label">Сопроводительное письмо</label>
+            <label class="textarea textarea-expandable">
+                <textarea rows="3" name="covering_letter">{{ old('covering_letter') }}</textarea>
             </label>
         </section>
 
