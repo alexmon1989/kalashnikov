@@ -88,7 +88,7 @@ class VacanciesController extends AdminController {
 		$vacancy = new Vacancy;
         $vacancy->title = trim(Input::get('title'));
         $vacancy->full_text = Input::get('full_text');
-        $vacancy->enabled = Input::get('is_on_main', 0);
+        $vacancy->enabled = Input::get('enabled', 0);
         $vacancy->save();
 
         return redirect()->action('Admin\VacanciesController@getEdit', ['id' => $vacancy->id])
