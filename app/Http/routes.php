@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
     Route::controllers([
         'dashboard'                 => 'DashboardController',
         'news'                      => 'NewsController',
+        'promotions'                => 'PromotionsController',
         'main/article'              => 'MainArticleController',
         'main/info-blocks'          => 'InfoBlocksController',
         'about'                     => 'AboutController',
@@ -30,13 +31,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth
         'gallery/categories'        => 'GalleryCategoriesController',
         'gallery/images'            => 'GalleryImagesController',
         'slider'                    => 'SliderController',
-        'clients'                   => 'ClientsController',
+        'partners'                  => 'PartnersController',
         'votes'                     => 'VotesController',
         'settings'                  => 'SettingsController',
         'products/list'             => 'ProductsController',
         'products/categories'       => 'ProductCategoriesController',
         'products/providers'        => 'ProductProvidersController',
         'products/manufacturers'    => 'ProductManufacturersController',
+        'vacancies'                 => 'VacanciesController',
     ]);
 });
 
@@ -49,10 +51,12 @@ Route::group(['namespace' => 'Marketing'], function()
 {
     Route::controllers([
         'news'          => 'NewsController',
+        'promotions'    => 'PromotionsController',
         'about'         => 'AboutController',
         'contacts'      => 'ContactsController',
         'gallery'       => 'GalleryController',
         'products'      => 'ProductsController',
         'search'        => 'SearchController',
+        'vacancies'     => 'VacanciesController',
     ]);
 });

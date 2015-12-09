@@ -136,6 +136,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+        'Illuminate\Broadcasting\BroadcastServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -206,7 +207,7 @@ return [
         'Memory'    => 'Orchestra\Support\Facades\Memory',
         'Form'      => 'Illuminate\Html\FormFacade',
         'HTML'      => 'Illuminate\Html\HtmlFacade',
-        'Debugbar' => 'Barryvdh\Debugbar\Facade',
+        'Debugbar' 	=> 'Barryvdh\Debugbar\Facade',
 
 	],
 

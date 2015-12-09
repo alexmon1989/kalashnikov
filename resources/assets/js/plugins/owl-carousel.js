@@ -4,8 +4,8 @@ var OwlCarousel = function () {
 
         //Owl Carousel
         initOwlCarousel: function () {
-	        //Owl Slider v1
-			var owl = jQuery(".owl-slider").owlCarousel({
+            //Owl Slider v1
+            var owl = jQuery(".owl-slider").owlCarousel({
                 itemsDesktop : [1000,5],
                 itemsDesktopSmall : [900,4],
                 itemsTablet: [600,3],
@@ -19,8 +19,8 @@ var OwlCarousel = function () {
             })
 
 
-	        //Owl Slider v2
-			var owl1 = jQuery(".owl-slider-v2").owlCarousel({
+            //Owl Slider v2
+            var owl1 = jQuery(".owl-slider-v2").owlCarousel({
                 itemsDesktop : [1000,5],
                 itemsDesktopSmall : [900,4],
                 itemsTablet: [600,3],
@@ -35,29 +35,29 @@ var OwlCarousel = function () {
             })
 
 
-	        //Owl Slider v3
-			jQuery(".owl-slider-v3").owlCarousel({
-            	items : 9,
-            	autoPlay : 5000,
-				itemsDesktop : [1000,5],
-				itemsDesktopSmall : [900,4],
-				itemsTablet: [600,3],
-				itemsMobile : [300,2]
+            //Owl Slider v3
+            jQuery(".owl-slider-v3").owlCarousel({
+                items : 9,
+                autoPlay : 5000,
+                itemsDesktop : [1000,5],
+                itemsDesktopSmall : [900,4],
+                itemsTablet: [600,3],
+                itemsMobile : [300,2]
             });
 
 
-	        //Owl Slider v4
-			jQuery(".owl-slider-v4").owlCarousel({
+            //Owl Slider v4
+            jQuery(".owl-slider-v4").owlCarousel({
                 items:3,
                 itemsDesktop : [1000,3],
                 itemsTablet : [600,2],
                 itemsMobile : [479,1]
             });
-			 
+
 
             //Owl Slider v5
             jQuery(document).ready(function() {
-            var owl = jQuery(".owl-slider-v5");
+                var owl = jQuery(".owl-slider-v5");
                 owl.owlCarousel({
                     items:1,
                     itemsDesktop : [1000,1],
@@ -70,7 +70,7 @@ var OwlCarousel = function () {
 
             //Owl Slider v6
             jQuery(document).ready(function() {
-            var owl = jQuery(".owl-slider-v6");
+                var owl = jQuery(".owl-slider-v6");
                 owl.owlCarousel({
                     items:5,
                     itemsDesktop : [1000,4],
@@ -84,7 +84,7 @@ var OwlCarousel = function () {
             jQuery(".owl-twitter-v1").owlCarousel({
                 singleItem : true,
                 slideSpeed : 1000,
-                autoPlay : 10000,              
+                autoPlay : 10000,
             });
 
 
@@ -98,13 +98,19 @@ var OwlCarousel = function () {
 
 
             //Owl Clients v1
-            jQuery(".owl-clients-v1").owlCarousel({
+            var owlClients = jQuery(".owl-clients-v1").owlCarousel({
                 items : 7,
                 autoPlay : 5000,
                 itemsDesktop : [1000,5],
                 itemsDesktopSmall : [900,4],
                 itemsTablet: [600,3],
                 itemsMobile : [300,2]
+            });
+            jQuery(".next-clients").click(function(){
+                owlClients.trigger('owl.next');
+            });
+            jQuery(".prev-clients").click(function(){
+                owlClients.trigger('owl.prev');
             });
 
 
@@ -118,7 +124,7 @@ var OwlCarousel = function () {
                 itemsMobile : [300,2]
             });
 
-            
+
             //Owl Video
             jQuery(".owl-video").owlCarousel({
                 items : 1,
@@ -126,9 +132,9 @@ var OwlCarousel = function () {
                 itemsDesktopSmall : [900,1],
                 itemsTablet: [600,1],
                 itemsMobile : [300,1]
-            });            
-		}
-        
+            });
+        }
+
     };
-    
+
 }();

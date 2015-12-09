@@ -4,9 +4,13 @@
 /.idea
 /public/files
 /public/img/clients
+/public/img/partners
 /public/img/gallery
 /public/img/product_categories
 /public/img/products/*
 /public/img/products/*/*
 /public/img/sliders
 /public/img/thumb
+/public/img/promotions
+/public/temp_cv
+_ide_helper.php

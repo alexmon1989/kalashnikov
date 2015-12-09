@@ -46,6 +46,7 @@ elixir(function(mix) {
         .copy('resources/assets/js/plugins/fancy-box.js', 'public/js/plugins/fancy-box.js')
         .copy('resources/assets/plugins/master-slider/quick-start/masterslider', 'public/plugins/masterslider')
         .copy('resources/assets/js/plugins/master-slider.js', 'public/js/plugins/master-slider.js')
+        .copy('resources/assets/js/pages/form-c-v.js', 'public/js/pages/form-c-v.js')
 
         // AdminLTE
         .copy('resources/assets/bower/adminlte/dist', 'public/adminlte/')

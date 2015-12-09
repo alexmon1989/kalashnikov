@@ -2,7 +2,7 @@
 
 @section('top_content')
 @include('admin.layout.breadcrumbs', [
-            'title' => 'Редактирование новости',
+            'title' => 'Создание новости',
             'items' => array(
                     array('title' => 'Начало работы', 'action' => 'Admin\DashboardController@getIndex', 'active' => FALSE),
                     array('title' => 'Новости', 'action' => 'Admin\NewsController@getIndex', 'active' => FALSE),

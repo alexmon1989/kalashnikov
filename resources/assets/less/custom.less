@@ -12,11 +12,19 @@
   }
 }
 
-.header .logo {
-  width: auto;
+.header {
+  .logo {
+    width: auto;
+  }
+
+  .navbar-nav > li > a {
+    bottom: -2px;
+    padding: 9px 17px;
+    position: relative;
+  }
 }
 
-.panel-title{
+h2.panel-title{
   a:hover {
     color: #fff;
   }
@@ -38,4 +46,33 @@
 
 .s-results .inner-results img {
   width: 165px;
+}
+
+.header {
+  .topbar {
+    ul.languages {
+      min-width: 115px;
+    }
+
+    ul.loginbar {
+      li i.fa {
+        color: #72c02c;
+      }
+    }
+
+    ul.loginbar > li > a, ul.loginbar > li > a:hover {
+      font-weight: bold;
+      color: #72c02c;
+      font-size: 20px;
+    }
+  }
+}
+
+.our-partners {
+  .col-xs-1 {
+    padding-top: 30px;
+    .prev-clients, .next-clients {
+      padding: 5px 13px;
+    }
+  }
 }

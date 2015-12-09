@@ -10,7 +10,12 @@
 .header .logo {
   width: auto;
 }
-.panel-title a:hover {
+.header .navbar-nav > li > a {
+  bottom: -2px;
+  padding: 9px 17px;
+  position: relative;
+}
+h2.panel-title a:hover {
   color: #fff;
 }
 .ms-inner-controls-cont,
@@ -25,6 +30,25 @@
 }
 .s-results .inner-results img {
   width: 165px;
+}
+.header .topbar ul.languages {
+  min-width: 115px;
+}
+.header .topbar ul.loginbar li i.fa {
+  color: #72c02c;
+}
+.header .topbar ul.loginbar > li > a,
+.header .topbar ul.loginbar > li > a:hover {
+  font-weight: bold;
+  color: #72c02c;
+  font-size: 20px;
+}
+.our-partners .col-xs-1 {
+  padding-top: 30px;
+}
+.our-partners .col-xs-1 .prev-clients,
+.our-partners .col-xs-1 .next-clients {
+  padding: 5px 13px;
 }
 
 /*# sourceMappingURL=custom.css.map */

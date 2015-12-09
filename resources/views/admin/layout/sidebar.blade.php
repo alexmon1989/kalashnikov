@@ -44,6 +44,12 @@
                 </a>
             </li>
 
+            <li class="{{ Request::segment(2) == 'promotions' ? 'active' : '' }}">
+                <a href="{{ action('Admin\PromotionsController@getIndex') }}">
+                    <i class="fa fa-thumbs-up"></i> <span>Промо-акции</span>
+                </a>
+            </li>
+
             <li class="{{ Request::segment(2) == 'about' ? 'active' : '' }}">
                 <a href="{{ action('Admin\AboutController@getIndex') }}"><i class="fa fa-building"></i> О Компании</a>
             </li>
@@ -94,12 +100,16 @@
                 <a href="{{ action('Admin\SliderController@getIndex') }}"><i class="fa fa-image"></i> Слайдер</a>
             </li>
 
-            <li class="{{ Request::segment(2) == 'clients' ? 'active' : '' }}">
-                <a href="{{ action('Admin\ClientsController@getIndex') }}"><i class="fa fa-rub"></i> Наши клиенты</a>
+            <li class="{{ Request::segment(2) == 'partners' ? 'active' : '' }}">
+                <a href="{{ action('Admin\PartnersController@getIndex') }}"><i class="fa fa-rub"></i> Наши партнёры</a>
             </li>
 
             <li class="{{ Request::segment(2) == 'votes' ? 'active' : '' }}">
                 <a href="{{ action('Admin\VotesController@getIndex') }}"><i class="fa fa-question "></i> Опросы</a>
+            </li>
+
+            <li class="{{ Request::segment(2) == 'vacancies' ? 'active' : '' }}">
+                <a href="{{ action('Admin\VacanciesController@getIndex') }}"><i class="fa fa-tty"></i> Вакансии</a>
             </li>
 
             <li class="{{ Request::segment(2) == 'auth' ? 'active' : '' }}">
