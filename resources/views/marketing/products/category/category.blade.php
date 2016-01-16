@@ -51,7 +51,7 @@
                                 <div class="thumbnail-img">
                                     <div class="overflow-hidden">
                                         <a href="{{ action('Marketing\ProductsController@getShow', ['id'=>$products[$i+$j]->id]) }}">
-                                            <img class="img-responsive" src="{{ count($products[$i+$j]->images) > 0 ? asset('img/products/'.$products[$i+$j]->id.'/'.$products[$i+$j]->images()->first()->file_name) : asset('img/products/no.jpg') }}" alt="{{ $products[$i+$j]->title }}" />
+                                            <img class="img-responsive" src="{{ count($products[$i+$j]->images) > 0 ? asset('img/products/'.$products[$i+$j]->id.'/'.$products[$i+$j]->images->first()->file_name) : asset('img/products/no.jpg') }}" alt="{{ $products[$i+$j]->title }}" />
                                         </a>
                                     </div>
                                 </div>
