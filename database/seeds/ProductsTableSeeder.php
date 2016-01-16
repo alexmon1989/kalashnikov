@@ -11,6 +11,7 @@ class ProductsTableSeeder extends Seeder {
 
         Product::create(array(
                 'title' => 'Три медведя',
+                'vendor_code' => '111',
                 'description' => 'Мороженое "Три медведя". Очень вкусное.',
                 'category_id' => 5,
                 'manufacturer_id' => 1,
@@ -23,6 +24,7 @@ class ProductsTableSeeder extends Seeder {
 
         Product::create(array(
                 'title' => 'Три медведя 2',
+                'vendor_code' => '222',
                 'description' => 'Мороженое "Три медведя 2". Очень вкусное.',
                 'category_id' => 5,
                 'manufacturer_id' => 1,

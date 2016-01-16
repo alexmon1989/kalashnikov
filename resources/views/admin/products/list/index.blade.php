@@ -28,6 +28,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Название</th>
+                    <th>Артикул</th>
                     <th>Категория</th>
                     <th>Производитель</th>
                     <th>Поставщик</th>
@@ -45,6 +46,7 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->title }}</td>
+                    <td>{{ $item->vendor_code }}</td>
                     <td>{{ $item->category->title }}</td>
                     <td>{{ $item->manufacturer->title }}</td>
                     <td>{{ $item->provider->title }}</td>

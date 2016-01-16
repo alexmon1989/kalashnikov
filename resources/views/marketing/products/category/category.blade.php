@@ -57,7 +57,8 @@
                                 </div>
                                 <div class="caption">
                                     <h3><a class="hover-effect" href="{{ action('Marketing\ProductsController@getShow', ['id'=>$products[$i+$j]->id]) }}">{{ $products[$i+$j]->title }}</a></h3>
-                                    <p><strong>Производитель:</strong> {{ $products[$i+$j]->manufacturer->title }}<br/>
+                                    <p>{!! $products[$i+$j]->vendor_code ? '<strong>Артикул:</strong> ' . $products[$i+$j]->vendor_code . '<br/>' : '' !!}
+                                    <strong>Производитель:</strong> {{ $products[$i+$j]->manufacturer->title }}<br/>
                                     <strong>Поставщик:</strong> {{ $products[$i+$j]->provider->title }}<br/>
                                     <strong>Тип упаковки:</strong> {{ $products[$i+$j]->packing }}<br/>
                                     <strong>Вес:</strong> {{ $products[$i+$j]->weight }}</p>
