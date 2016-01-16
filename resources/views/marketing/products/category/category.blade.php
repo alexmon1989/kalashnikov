@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-md-9">
-        <h2>{{ $category->title }} (результатов: {{ $products->count() }})</h2>
+        <h2>{{ $category->title }} (результатов: {{ $products_count }})</h2>
         <p>{!! $category->description !!}</p>
         <hr/>
 
