@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-md-9">
-        <h2>{{ $category->title }} (результатов: {{ $products->count() }})</h2>
+        <h2>{{ $category->title }} (результатов: {{ $products_count }})</h2>
         <p>{!! $category->description !!}</p>
         <hr/>
 
@@ -51,13 +51,14 @@
                                 <div class="thumbnail-img">
                                     <div class="overflow-hidden">
                                         <a href="{{ action('Marketing\ProductsController@getShow', ['id'=>$products[$i+$j]->id]) }}">
-                                            <img class="img-responsive" src="{{ count($products[$i+$j]->images) > 0 ? asset('img/products/'.$products[$i+$j]->id.'/'.$products[$i+$j]->images()->first()->file_name) : asset('img/products/no.jpg') }}" alt="{{ $products[$i+$j]->title }}" />
+                                            <img class="img-responsive" src="{{ count($products[$i+$j]->images) > 0 ? asset('img/products/'.$products[$i+$j]->id.'/'.$products[$i+$j]->images->first()->file_name) : asset('img/products/no.jpg') }}" alt="{{ $products[$i+$j]->title }}" />
                                         </a>
                                     </div>
                                 </div>
                                 <div class="caption">
                                     <h3><a class="hover-effect" href="{{ action('Marketing\ProductsController@getShow', ['id'=>$products[$i+$j]->id]) }}">{{ $products[$i+$j]->title }}</a></h3>
-                                    <p><strong>Производитель:</strong> {{ $products[$i+$j]->manufacturer->title }}<br/>
+                                    <p>{!! $products[$i+$j]->vendor_code ? '<strong>Артикул:</strong> ' . $products[$i+$j]->vendor_code . '<br/>' : '' !!}
+                                    <strong>Производитель:</strong> {{ $products[$i+$j]->manufacturer->title }}<br/>
                                     <strong>Поставщик:</strong> {{ $products[$i+$j]->provider->title }}<br/>
                                     <strong>Тип упаковки:</strong> {{ $products[$i+$j]->packing }}<br/>
                                     <strong>Вес:</strong> {{ $products[$i+$j]->weight }}</p>

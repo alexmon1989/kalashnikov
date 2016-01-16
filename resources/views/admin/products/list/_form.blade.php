@@ -3,7 +3,12 @@
     <div class="box-body">
         <div class="form-group">
             <label for="title">Название</label>
-            <input type="title" placeholder="Название" id="title" name="title" class="form-control" value="{{ old('title', isset($product) ? $product->title : '') }}">
+            <input type="text" placeholder="Название" id="title" name="title" class="form-control" value="{{ old('title', isset($product) ? $product->title : '') }}">
+        </div>
+
+        <div class="form-group">
+            <label for="title">Название</label>
+            <input type="text" placeholder="Артикул" id="vendor_code" name="vendor_code" class="form-control" value="{{ old('vendor_code', isset($product) ? $product->vendor_code : '') }}">
         </div>
 
         <div class="form-group">

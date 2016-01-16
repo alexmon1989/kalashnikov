@@ -59,6 +59,7 @@ class ProductsController extends AdminController {
         // Создаём продукт, заполняем данными, сохраняем
         $product = new Product;
         $product->title = trim($request->get('title'));
+        $product->vendor_code = trim($request->get('vendor_code'));
         $product->description = trim($request->get('description'));
         $product->category_id = $request->get('category_id');
         $product->manufacturer_id = $request->get('manufacturer_id');
@@ -98,6 +99,7 @@ class ProductsController extends AdminController {
     {
         $product = $this->findProduct($id);
         $product->title = trim($request->get('title'));
+        $product->vendor_code = trim($request->get('vendor_code'));
         $product->description = trim($request->get('description'));
         $product->category_id = $request->get('category_id');
         $product->manufacturer_id = $request->get('manufacturer_id');

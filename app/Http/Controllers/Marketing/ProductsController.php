@@ -128,6 +128,9 @@ class ProductsController extends Controller {
             $data['products'] = $data['products']->whereIn('provider_id', Input::get('provider_id'));
         }
 
+        // Количество продуктов в конкретно этой категории
+        $data['products_count'] = $data['products']->count();
+
         // Постраничный вывод
         $data['products'] = $data['products']->paginate(9);
 
