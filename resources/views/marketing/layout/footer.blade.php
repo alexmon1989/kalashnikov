@@ -22,8 +22,8 @@
                         <li><a href="{{ action('Marketing\PromotionsController@getIndex') }}">Промо-акции</a><i class="fa fa-angle-right"></i></li>
                         <li><a href="{{ action('Marketing\ProductsController@getIndex') }}">Продукция</a><i class="fa fa-angle-right"></i></li>
                         <li><a href="{{ action('Marketing\GalleryController@getIndex') }}">Галерея</a><i class="fa fa-angle-right"></i></li>
-                        <li><a href="{{ action('Marketing\ContactsController@getIndex') }}">Контакты</a><i class="fa fa-angle-right"></i></li>
                         <li><a href="{{ action('Marketing\VacanciesController@getIndex') }}">Вакансии</a><i class="fa fa-angle-right"></i></li>
+                        <li><a href="{{ action('Marketing\ContactsController@getIndex') }}">Контакты</a><i class="fa fa-angle-right"></i></li>
                     </ul>
                 </div><!--/col-md-3-->
                 <!-- End Link List -->
