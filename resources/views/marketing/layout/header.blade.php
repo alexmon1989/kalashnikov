@@ -43,8 +43,8 @@
                 <li class="{{ Request::segment(1) == 'news' ? 'active' : '' }}"><a href="{{ action('Marketing\NewsController@getIndex') }}">Новости</a></li>
                 <li class="{{ Request::segment(1) == 'promotions' ? 'active' : '' }}"><a href="{{ action('Marketing\PromotionsController@getIndex') }}">Промо-акции</a></li>
                 <li class="{{ Request::segment(1) == 'products' ? 'active' : '' }}"><a href="{{ action('Marketing\ProductsController@getIndex') }}">Продукция</a></li>
-                <li class="{{ Request::segment(1) == 'contacts' ? 'active' : '' }}"><a href="{{ action('Marketing\ContactsController@getIndex') }}">Контакты</a></li>
                 <li class="{{ Request::segment(1) == 'vacancies' ? 'active' : '' }}"><a href="{{ action('Marketing\VacanciesController@getIndex') }}">Вакансии</a></li>
+                <li class="{{ Request::segment(1) == 'contacts' ? 'active' : '' }}"><a href="{{ action('Marketing\ContactsController@getIndex') }}">Контакты</a></li>
 
                 <!-- Search Block -->
                 <li>
