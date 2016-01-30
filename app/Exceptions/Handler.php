@@ -2,6 +2,7 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\View;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Support\Facades\Request;
@@ -55,8 +56,9 @@ class Handler extends ExceptionHandler {
         $status = $e->getStatusCode();
 
         $prefix = '';
-        if (Request::segment(1) == 'admin' and Auth::check())
+        if (Request::segment(1) == 'admin' && Auth::check())
         {
+            View::share('auser', Auth::user());
             $prefix = 'admin.';
         }
 
