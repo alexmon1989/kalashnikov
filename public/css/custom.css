@@ -12,8 +12,11 @@
 }
 .header .navbar-nav > li > a {
   bottom: -2px;
-  padding: 9px 17px;
+  padding: 9px 19px;
   position: relative;
+}
+.header .dropdown a::after {
+  right: 7px;
 }
 h2.panel-title a:hover {
   color: #fff;

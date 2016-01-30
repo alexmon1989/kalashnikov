@@ -7,24 +7,6 @@
         </a>
         <!-- End Logo -->
 
-        <!-- Topbar -->
-        <div class="topbar">
-            <ul class="loginbar pull-right">
-                <li class="hoverSelector">
-                    <i class="fa fa-globe"></i>
-                    <a>Филиал</a>
-                    <ul class="languages hoverSelectorBlock">
-                        <li class="{{ preg_match('/vladikavkaz.kalashnikovcom.ru/i', url()) ? 'active' : '' }}">
-                            <a target="_blank" href="http://vladikavkaz.kalashnikovcom.ru/{{ Request::path() != '/' ? Request::path() : '' }}?from_second=1">Владикавказ {!! preg_match('/vladikavkaz.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
-                        </li>
-                        <li class="{{ preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? 'active' : '' }}">
-                            <a target="_blank" href="http://krasnodar.kalashnikovcom.ru/{{ Request::path() != '/' ? Request::path() : '' }}?from_second=1">Краснодар {!! preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- End Topbar -->
 
         <!-- Toggle get grouped for better mobile display -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -38,7 +20,6 @@
     <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
         <div class="container">
             <ul class="nav navbar-nav">
-                <li class="{{ Request::segment(1) == 'main' || Request::segment(1) == '' ? 'active' : '' }}"><a href="{{ action('Marketing\MainController@index') }}">Главная</a></li>
                 <li class="{{ Request::segment(1) == 'about' ? 'active' : '' }}"><a href="{{ action('Marketing\AboutController@getIndex') }}">О компании</a></li>
                 <li class="{{ Request::segment(1) == 'news' ? 'active' : '' }}"><a href="{{ action('Marketing\NewsController@getIndex') }}">Новости</a></li>
                 <li class="{{ Request::segment(1) == 'promotions' ? 'active' : '' }}"><a href="{{ action('Marketing\PromotionsController@getIndex') }}">Промо-акции</a></li>
@@ -46,7 +27,23 @@
                 <li class="{{ Request::segment(1) == 'vacancies' ? 'active' : '' }}"><a href="{{ action('Marketing\VacanciesController@getIndex') }}">Вакансии</a></li>
                 <li class="{{ Request::segment(1) == 'contacts' ? 'active' : '' }}"><a href="{{ action('Marketing\ContactsController@getIndex') }}">Контакты</a></li>
 
-                <!-- Search Block -->
+                <!-- Филиалы -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        Филиал
+                    </a>
+                    <ul class="dropdown-menu pull-right">
+                        <li class="{{ preg_match('/vladikavkaz.kalashnikovcom.ru/i', url()) ? 'active' : '' }}">
+                            <a target="_blank" href="http://vladikavkaz.kalashnikovcom.ru/{{ Request::path() != '/' ? Request::path() : '' }}?from_second=1">Владикавказ {!! preg_match('/vladikavkaz.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
+                        </li>
+                        <li class="{{ preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? 'active' : '' }}">
+                            <a target="_blank" href="http://krasnodar.kalashnikovcom.ru/{{ Request::path() != '/' ? Request::path() : '' }}?from_second=1">Краснодар {!! preg_match('/krasnodar.kalashnikovcom.ru/i', url()) ? '<i class="fa fa-check"></i>' : '' !!}</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- End Misc Pages -->
+
+                <!-- Филиалы -->
                 <li>
                     <i class="search fa fa-search search-btn"></i>
                     <div class="search-open">

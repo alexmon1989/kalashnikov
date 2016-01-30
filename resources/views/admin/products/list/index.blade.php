@@ -23,7 +23,7 @@
         <p>
             <a class="btn btn-primary" href="{{ action('Admin\ProductsController@getCreate') }}"><i class="fa fa-plus"></i> Создать</a>
         </p>
-        <table id="data" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table id="data-products" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -40,33 +40,39 @@
                     <th>Действия</th>
                 </tr>
             </thead>
-
-            <tbody>
-                @foreach($products as $item)
-                <tr>
-                    <td>{{ $item->id }}</td>
-                    <td>{{ $item->title }}</td>
-                    <td>{{ $item->vendor_code }}</td>
-                    <td>{{ $item->category->title }}</td>
-                    <td>{{ $item->manufacturer->title }}</td>
-                    <td>{{ $item->provider->title }}</td>
-                    <td>{{ $item->packing }}</td>
-                    <td>{{ $item->weight }}</td>
-                    <td>{!! $item->enabled == TRUE ? '<strong>Да</strong>' : 'Нет' !!}</td>
-                    <td>{{ date('d.m.Y H:i:s', strtotime($item->created_at)) }}</td>
-                    <td>{{ date('d.m.Y H:i:s', strtotime($item->updated_at)) }}</td>
-                    <td>
-                        <div class="btn-group">
-                            <a class="btn btn-primary btn-sm" href="{{ action('Admin\ProductsController@getEdit', array('id' => $item->id)) }}" title="Редактировать"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-danger btn-sm item-delete" href="{{ action('Admin\ProductsController@getDelete', array('id' => $item->id)) }}" title="Удалить"><i class="fa fa-remove"></i></a>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
         </table>
     </div><!-- /.box-body -->
     <div class="box-footer">
     </div><!-- /.box-footer-->
 </div><!-- /.box -->
 @stop
+
+@push('script')
+<script>
+    $(function() {
+        $('#data-products').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! action('Admin\ProductsController@getDatatablesData') !!}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'title', name: 'title' },
+                { data: 'vendor_code', name: 'vendor_code' },
+                { data: 'category.title', name: 'category.title' },
+                { data: 'manufacturer.title', name: 'manufacturer.title' },
+                { data: 'provider.title', name: 'provider.title' },
+                { data: 'packing', name: 'packing' },
+                { data: 'weight', name: 'weight' },
+                { data: 'enabled', name: 'enabled' },
+                { data: 'created_at', name: 'created_at' },
+                { data: 'updated_at', name: 'updated_at' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ],
+            stateSave: true,
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.10.7/i18n/Russian.json'
+            }
+        });
+    });
+</script>
+@endpush
