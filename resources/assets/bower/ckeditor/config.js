@@ -36,7 +36,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
 
-    config.filebrowserBrowseUrl = '/kalashnikov/public/elfinder/ckeditor';
+    config.filebrowserBrowseUrl = '/elfinder/ckeditor';
 
     config.extraPlugins = 'youtube';
 
