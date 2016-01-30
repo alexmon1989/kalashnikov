@@ -12,6 +12,7 @@ use App\Http\Requests\StoreProductsRequest;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Intervention\Image\Facades\Image;
+use Yajra\Datatables\Datatables;
 
 class ProductsController extends AdminController {
 
@@ -246,5 +247,35 @@ class ProductsController extends AdminController {
 
 
         return $name.'.'.$upload_file->getClientOriginalExtension();
+    }
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getDatatablesData()
+    {
+        $products = Product::with(['category', 'manufacturer', 'provider', 'images'])->get();
+
+        return Datatables::of($products)
+            ->addColumn('action', function ($item) {
+                $s =  '<a class="btn btn-primary btn-sm" href="'.action('Admin\ProductsController@getEdit', ['id' => $item->id]).'" title="Редактировать"><i class="fa fa-edit"></i></a>';
+                $s .= '<a class="btn btn-danger btn-sm item-delete" href="'.action('Admin\ProductsController@getDelete', ['id' => $item->id]).'" title="Удалить"><i class="fa fa-remove"></i></a>';
+                return $s;
+            })
+            ->addColumn('enabled', function ($item) {
+                $s = $item->enabled ? '<strong>Да</strong>' : 'Нет';
+                return $s;
+            })
+            ->addColumn('created_at', function ($item) {
+                $s = date('d.m.Y H:i:s', strtotime($item->created_at));
+                return $s;
+            })
+            ->addColumn('updated_at', function ($item) {
+                $s = date('d.m.Y H:i:s', strtotime($item->updated_at));
+                return $s;
+            })
+            ->make(true);
     }
 }

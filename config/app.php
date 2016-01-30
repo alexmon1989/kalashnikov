@@ -154,6 +154,7 @@ return [
         'Orchestra\Memory\MemoryServiceProvider',
         'Orchestra\Memory\CommandServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+		Yajra\Datatables\DatatablesServiceProvider::class,
 	],
 
 	/*
@@ -208,7 +209,7 @@ return [
         'Form'      => 'Illuminate\Html\FormFacade',
         'HTML'      => 'Illuminate\Html\HtmlFacade',
         'Debugbar' 	=> 'Barryvdh\Debugbar\Facade',
-
+		'Datatables' => Yajra\Datatables\Datatables::class,
 	],
 
 ];
