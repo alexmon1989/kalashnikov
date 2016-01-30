@@ -7,7 +7,7 @@
         </div>
 
         <div class="form-group">
-            <label for="title">Название</label>
+            <label for="title">Артикул</label>
             <input type="text" placeholder="Артикул" id="vendor_code" name="vendor_code" class="form-control" value="{{ old('vendor_code', isset($product) ? $product->vendor_code : '') }}">
         </div>
 
