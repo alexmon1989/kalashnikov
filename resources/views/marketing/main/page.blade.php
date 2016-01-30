@@ -29,7 +29,6 @@
 
     <!-- Галерея и опрос -->
     <div class="col-md-4">
-        @gallery()
         @polls()
     </div><!--/col-md-4-->
 </div>
